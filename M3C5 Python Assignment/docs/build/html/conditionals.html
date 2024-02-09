@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html lang="es" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Condicionales &#8212; documentación de M3C5 - 0.0.1</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=6fcc102b"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=efdbd0b9"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Bucles" href="bucles.html" />
+    <link rel="prev" title="¡Bienvenido a la documentación del ejercicio M3C5!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="condicionales">
+<h1>Condicionales<a class="headerlink" href="#condicionales" title="Link to this heading">¶</a></h1>
+<p>El primer punto a tratar sobre Python son los condicionales. Pero ¿qué es un condicional
+en nuestro lenguaje? Podríamos definir un condicional de la siguiente manera:</p>
+<p>Si «primera parte, condición», ocurre «segunda parte, consecuencia».</p>
+<p>Por ejemplo: Si «llueve», «me mojaré». Me mojaré si se cumple la primera condición, en este caso,
+que llueva.</p>
+<p>Si sabéis hablar vuestro idioma, no tendreís problema con los condicionales en Python (vaya maestría, usar condicionales
+para explicar condicionales xD); son iguales. Para comenzar a escribir tus propios condicionales en Python sólo necesitáis una
+palabra, <em>if</em> (si en inglés).</p>
+<section id="if">
+<h2>if<a class="headerlink" href="#if" title="Link to this heading">¶</a></h2>
+<p>Con el <em>if</em> queremos preguntar si una condición se cumple y, en caso de cumplirse, ocurrirá algo, se ejecutará el código dentro de ese
+condicional. Todo se entiende mejor con un ejemplo, así que supongamos que queremos hacer una aplicación para un casino online,
+de tal manera que solo os deje «entrar» si sois mayores de edad. Ser mayor de edad, en España, significa tener 18 o más años. Entonces,
+queremos que el programa nos diga que tenemos permiso si tenemos 18 o más años.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">edad</span> <span class="o">=</span> <span class="mi">19</span>
+
+<span class="k">if</span> <span class="n">edad</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Acceso permitido&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Acceso permitido</span>
+</pre></div>
+</div>
+<p>Parece que funciona a la perfección y que sabe que alguien de 19 años puede entrar. Sin embargo, tenemos un pequeño problema,
+¿qué ocurre con los que tienen menos de 18 años?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">edad</span> <span class="o">=</span> <span class="mi">17</span>
+
+<span class="k">if</span> <span class="n">edad</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Acceso permitido&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+</pre></div>
+</div>
+<p>No ocurre nada, ni imprime un resultado ni devuelve un valor. Eso pasa porque no le hemos dicho qué hacer cuando la gente sea
+menor de edad. Para solucionar este problema tenemos dos opciones.</p>
+</section>
+<section id="else">
+<h2>else<a class="headerlink" href="#else" title="Link to this heading">¶</a></h2>
+<p>Cuando he descrito un condicional por primera vez, he mencionado que si se cumple, ocurre algo. Pero ¿si no ocurre?
+«Si no» o «en cualquier otro caso» se repesentan con <em>else</em> en Python. Volviendo al ejemplo del casino, si tenemos 18
+o más años somos mayores de edad y tinemos acceso, si no tenemos esa edad, somos menores y no podemos entrar. Ahí, usamos
+el <em>else</em>, para capturar todo lo que nuestro condicional no pilla, en este caso, si la edad no es de 18 años o más, tiene
+que tener sí o sí un número entre 0 y 17 (incluido). El término <em>else</em> se encargará de ello.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">edad</span> <span class="o">=</span> <span class="mi">17</span>
+
+<span class="k">if</span> <span class="n">edad</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Acceso permitido&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Acceso denegado&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Acceso denegado</span>
+</pre></div>
+</div>
+<p>¡Listo! Aunque hay otra manera de hacerlo. Todo el que me conoce sabe que soy un poco enrevesado (alerta por eufemismo), y, como no
+podría ser de otra manera, puedo complicar algo tan sencillo como lo anterior. Para esa titánica tarea, de hacer difícil lo fácil de este código, ignorando las recomendaciones
+de escritura de Python, usaremos el término <em>elif</em>.</p>
+</section>
+<section id="elif">
+<h2>elif<a class="headerlink" href="#elif" title="Link to this heading">¶</a></h2>
+<p>Si <em>if</em> y <em>else</em> tuvieran un hijo, seguro que se llamaría <em>elif</em>. El término <em>elif</em> se usa cuando aparte del <em>if</em> queremos otro condicional, pero no queremos ser tan
+tajantes como cuando usamos <em>else</em>. En este caso no queremos sólo englobar todo lo que no es cubierto por <em>if</em>, sino que queremos poner una segunda condición. Retornando
+a nuestro casino online, podríamos haber escrito este código para denegar el acceso a los menores, en lugar del <em>else</em>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">edad</span> <span class="o">=</span> <span class="mi">17</span>
+
+<span class="k">if</span> <span class="n">edad</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Acceso permitido&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">edad</span> <span class="o">&lt;</span> <span class="mi">18</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Acceso denegado&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Acceso denegado</span>
+</pre></div>
+</div>
+<p>Cuando me dijeron «no sé cómo puedes complicar algo tan fácil», tenían razón. Con <em>else</em> ya capturábamos todo lo que era inferior a 18 años. Entonces, ¿cuándo puede ser útil
+el <em>elif</em>? Usar <em>elif</em> es útil cuando tenemos múltiples opciones o ramificaciones de decisión. En el caso de nuestro casino online, imaginemos que varios usuarios, cuyos nombres
+están en una lista, se han autoprohibido la entrada para evitar caer en la ludopatía. Aparte de la edad, ahora, tenemos en cuenta el nombre del usuario.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lista_nombres</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Manuel&quot;</span><span class="p">,</span> <span class="s2">&quot;Paco&quot;</span><span class="p">,</span> <span class="s2">&quot;Sara&quot;</span><span class="p">]</span>
+<span class="n">edad</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">nombre</span> <span class="o">=</span> <span class="s2">&quot;Paco&quot;</span>
+
+<span class="k">if</span> <span class="n">edad</span> <span class="o">&lt;</span> <span class="mi">18</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Acceso denegado&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">nombre</span> <span class="ow">in</span> <span class="n">lista_nombres</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Acceso denegado&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Acceso permitido&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Acceso denegado</span>
+</pre></div>
+</div>
+<p>Si bien es cierto que Paco no es detectado por el primer <em>if</em> al ser mayor de 18, su nombre está en la lista de autoprohibición, así que se le deniega el acceso.
+Si el cliente es mayor o igual a 18 y no está en la lista, será tratado como <em>else</em> y conseguirá acceso a la app. Podríamos poner un poco más bonito el código reduciendo
+el número de líneas. Para ello, podemos recurrir a las declaraciones compuestas.</p>
+</section>
+<section id="declaraciones-compuestas">
+<h2>Declaraciones compuestas<a class="headerlink" href="#declaraciones-compuestas" title="Link to this heading">¶</a></h2>
+<p>Hasta ahora hemos declarado las condiciones con una única declaración o requisito. No obstante, podemos usar operadores lógicos como <em>and</em> (conjunción copulativa «y») u
+<em>or</em> (conjunción coordinante disyuntiva «o») para poner varios requisitos simultáneamente.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lista_nombres</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Manuel&quot;</span><span class="p">,</span> <span class="s2">&quot;Paco&quot;</span><span class="p">,</span> <span class="s2">&quot;Sara&quot;</span><span class="p">]</span>
+<span class="n">edad</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">nombre</span> <span class="o">=</span> <span class="s2">&quot;Paco&quot;</span>
+
+<span class="k">if</span> <span class="n">edad</span> <span class="o">&lt;</span> <span class="mi">18</span> <span class="ow">or</span> <span class="p">(</span><span class="n">nombre</span> <span class="ow">in</span> <span class="n">lista_nombres</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Acceso denegado&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Acceso permitido&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Acceso denegado</span>
+</pre></div>
+</div>
+<p>¡Mucho más limpio! Eso mismo con <em>and</em> sería lo siguiente:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lista_nombres</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Manuel&quot;</span><span class="p">,</span> <span class="s2">&quot;Paco&quot;</span><span class="p">,</span> <span class="s2">&quot;Sara&quot;</span><span class="p">]</span>
+<span class="n">edad</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">nombre</span> <span class="o">=</span> <span class="s2">&quot;Paco&quot;</span>
+
+<span class="k">if</span> <span class="n">edad</span> <span class="o">&gt;=</span> <span class="mi">18</span> <span class="ow">and</span> <span class="p">(</span><span class="n">nombre</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lista_nombres</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Acceso permitido&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Acceso denegado&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Acceso denegado</span>
+</pre></div>
+</div>
+<p>Que no Paco, que no vas a entrar por mucho que lo intentes. Aquí podéis ver cómo al usar <em>and</em> (y <em>not in</em>) hemos puestos dos requisitos
+para entrar, tener 18 años o más y, al mismo tiempo, no ser ninguna de las tres personas en la lista. Todo el resto de la gente, esto es, los menores de 18
+o las tres personas con prohibición, tendrán denegado el acceso. Hay gente que prefiere una condición por línea y así poder entender la elección del programa
+línea por línea. Para esto, podemos usar condicionales anidadas.</p>
+</section>
+<section id="condicionales-anidadas">
+<h2>Condicionales anidadas<a class="headerlink" href="#condicionales-anidadas" title="Link to this heading">¶</a></h2>
+<p>Anidar en Python es lo mismo que tener unas muñecas matrioskas, unas dentro de otras. En Python se puede anidar casi cualquier elemento, y, por supuesto,
+las declaraciones condicionales se pueden anidar. Voy a mostrar el código anterior, pero en lugar de usar <em>and</em>, voy a usar condicionales anidadas.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lista_nombres</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Manuel&quot;</span><span class="p">,</span> <span class="s2">&quot;Paco&quot;</span><span class="p">,</span> <span class="s2">&quot;Sara&quot;</span><span class="p">]</span>
+<span class="n">edad</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">nombre</span> <span class="o">=</span> <span class="s2">&quot;Paco&quot;</span>
+
+<span class="k">if</span> <span class="n">edad</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">nombre</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lista_nombres</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Acceso permitido&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Acceso denegado&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Acceso denegado&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Acceso denegado</span>
+</pre></div>
+</div>
+<p>Son más líneas de código que el ejemplo anterior, lo que se consideraría poco pythónico, pero el objetivo es mostrar la sintáxis y el razonamiento. Primero se mira la edad
+y, después, si el nombre está en la lista. Esto último sólo ocurre si el cliente «entra» en el primer condicional de la edad, si no, es que es menor, así que nos
+da igual su nombre. Anidar condicionales es útil cuando queremos segregar nuestros datos por diferentes criterios y alguno de ellos depende del otro. De esta manera,
+se ponen diferentes puntos de corte y sólo se ejecutan algunas condicionales si se ha pasado el primer umbral.</p>
+</section>
+<section id="expresiones-ternarias-condicionales">
+<h2>Expresiones ternarias condicionales<a class="headerlink" href="#expresiones-ternarias-condicionales" title="Link to this heading">¶</a></h2>
+<p>¿Qué hay más bonito en la vida que las cosas sencillas? Nada, y los creadores de Python lo saben. Cuando tenemos condiciones sencillas, como la primera:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">edad</span> <span class="o">=</span> <span class="mi">17</span>
+
+<span class="k">if</span> <span class="n">edad</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Acceso permitido&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Acceso denegado&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Condiciones «esto o lo otro», de todo o nada, de dos opciones…, podemos usar las expresiones ternarias que son muy similares a nuestro lenguaje hablado y escrito.
+Entras si tienes 18 años o más, si no, no entras.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">edad</span> <span class="o">=</span> <span class="mi">17</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Acceso permitido&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">edad</span> <span class="o">&gt;=</span> <span class="mi">18</span> <span class="k">else</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Acceso denegado&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Acceso denegado</span>
+</pre></div>
+</div>
+<p>Esta segunda manera es más clara y legible, si traduces lo que pone del inglés al castellano tendrás: «Acceso permitido si tu edad es mayor o igual a
+18 si no acceso denegado.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">M3C5</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navegación</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Condicionales</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#if">if</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#else">else</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#elif">elif</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#declaraciones-compuestas">Declaraciones compuestas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#condicionales-anidadas">Condicionales anidadas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#expresiones-ternarias-condicionales">Expresiones ternarias condicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bucles.html">Bucles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_comprehension.html">Comprensión de listas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Funciones</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="capítulo anterior">¡Bienvenido a la documentación del ejercicio M3C5!</a></li>
+      <li>Next: <a href="bucles.html" title="próximo capítulo">Bucles</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Endika de la Iglesia.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/conditionals.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

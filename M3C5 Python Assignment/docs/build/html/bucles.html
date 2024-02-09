@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html lang="es" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Bucles &#8212; documentación de M3C5 - 0.0.1</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=6fcc102b"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=efdbd0b9"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Comprensión de listas" href="list_comprehension.html" />
+    <link rel="prev" title="Condicionales" href="conditionals.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="bucles">
+<h1>Bucles<a class="headerlink" href="#bucles" title="Link to this heading">¶</a></h1>
+<p>Vamos a explorar el mundo de los bucles en Python. Pero ¿qué es un bucle? Un bucle es un suceso que se reitera en el tiempo. Se utiliza el término
+iterar cuando nos referimos a que una acción se repite «x» veces. Esa repetición se basa en un parámetro, o condición, que llevará la cuenta del número de veces
+que queramos ejecutar la citada acción.</p>
+<p>Si queremos generar la hoja del calendario de un mes, podríamos imprimir cada número, cada día, de manera iterativa hasta llegar al número máximo de
+días de ese mes.</p>
+<p>No nos gusta ser repetitivos, tener que hacer lo mismo una y otra vez puede ser agotador.
+El mundo de la programación nos permite repetir acciones sin necesidad de ir elemento por elemento de manera manual. Los bucles son nuestros amigos en esas
+situaciones en las que queremos hacer algo un número determinado de veces, pero no queremos hacerlo línea por línea.</p>
+<p>Yo, personalmente, guardo mi lista de la compra de la frutería en forma de diccionario de Python (lo más normal del mundo, ¿verdad?)
+Tengo pares de llave y valor para el nombre de cada fruta y la cantidad que quiero ese día.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">compra_frutas</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;manzana&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s2">&quot;pera&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;plátano&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="s2">&quot;fresa&quot;</span><span class="p">:</span> <span class="mi">20</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Si quiero imprimirme una lista más legible por un humano, podría imprimir cada par manualmente.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Compra:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">compra_frutas</span><span class="p">[</span><span class="s1">&#39;manzana&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> manzana(s)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">compra_frutas</span><span class="p">[</span><span class="s1">&#39;pera&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> pera(s)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">compra_frutas</span><span class="p">[</span><span class="s1">&#39;plátano&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> plátano(s)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">compra_frutas</span><span class="p">[</span><span class="s1">&#39;fresa&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> fresa(s)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Compra:</span>
+
+<span class="go">3 manzana(s)</span>
+<span class="go">1 pera(s)</span>
+<span class="go">8 plátano(s)</span>
+<span class="go">20 fresa(s)</span>
+</pre></div>
+</div>
+<p>Es muy tedioso, imaginad tener 1000 elementos en la lista, sería tan grave para nuestras manos escribiéndolo como para nuestra cartera comprándolo.
+Por eso existen los bucles, para facilitar esta tarea. Existen dos maneras de generar bucles, usanod <em>for</em> y usando <em>while</em>. A continuación veremos cuándo usar cada tipo de bucle.</p>
+<section id="for">
+<h2>for<a class="headerlink" href="#for" title="Link to this heading">¶</a></h2>
+<p>Con el <em>for</em> queremos repetir una acción un determinado número de veces en una colección de datos (en el ejemplo un diccionario, pero se puede usar con listas, tuplas o, incluso, con cadenas de texto, que son colecciones
+de caracteres). En su sintaxis encontramos que hay dos elementos, la variable o variables (en este caso, con el diccionario, llave-valor), que representa el elemento actual con
+el que estamos trabajando, y el objeto iterable, la colección sobre la que iteramos. Veámoslo con el ejemplo de imprimir mi lista de la compra:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Compra:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">fruta</span><span class="p">,</span> <span class="n">cantidad</span> <span class="ow">in</span> <span class="n">compra_frutas</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cantidad</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">fruta</span><span class="si">}</span><span class="s2">(s)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Compra:</span>
+
+<span class="go">3 manzana(s)</span>
+<span class="go">1 pera(s)</span>
+<span class="go">8 plátano(s)</span>
+<span class="go">20 fresa(s)</span>
+</pre></div>
+</div>
+<p>Como se puede apreciar, aquello que queremos una vez, como, por ejemplo, la orden de comprar, lo dejamos fuera del bucle. Queremos iterar en el diccionario, así que el iterable
+es compra_frutas o más bien su vista interna de las parejas en forma de tuplas («.items()» del diccionario). Las variables que queremos son dos,
+la fruta (llave del diccionario) y la cantidad (el valor para cada llave). Después, sólo imprimimos una frase, pero su contenido cambia de manera dinámica y lo hace
+tantas veces como elementos tengamos en la colección (4 veces en este caso). Aparte de <em>for</em> podemos usar <em>while</em>.</p>
+</section>
+<section id="while">
+<h2>while<a class="headerlink" href="#while" title="Link to this heading">¶</a></h2>
+<p>Es muy parecido al <em>for</em>, pero su lógica difiere un poco. En este caso <em>while</em> significa mientras algo sea así haz esto, al contrario que con <em>for</em> que era equivalente
+a «para cada caso en este iterable». En este caso necesitamos una manera de llevar la cuenta, ya que «mientras diccionario» no tiene ningún sentido. Al haber elegido un diccionario,
+todo se complica un poco, debo transformarlo en una lista para poder llevar la cuenta, <em>while</em> no es capaz de mirar dentro del diccinario para saber cuántos
+elementos tiene, le tenemos que ayudar a contar.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Compra:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">contador</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">contador</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">compra_frutas</span><span class="o">.</span><span class="n">items</span><span class="p">())):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">compra_frutas</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="n">contador</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">compra_frutas</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="n">contador</span><span class="p">]</span><span class="si">}</span><span class="s2">(s)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Compra:</span>
+
+<span class="go">3 manzana(s)</span>
+<span class="go">3 manzana(s)</span>
+<span class="go">3 manzana(s)</span>
+<span class="go">3 manzana(s)</span>
+<span class="go">3 manzana(s)</span>
+<span class="go">Hasta el infinito y más allá</span>
+</pre></div>
+</div>
+<p>¿Qué ha pasado? ¿Por qué me siento como Bill Murray en el <em>Día de la Marmota</em>? ¿Qué ha fallado? Vayamos punto por punto. Primero imprimimos la frase de comprar. Luego
+ponemos un contador a 0, recordemos que <em>while</em> suspendía matemáticas en el colegio. En el bucle decimos que mientras el contador sea inferior a la longitud (número)
+del diccionario (nótese cómo primero hemos transformado los pares de elementos del diccionario a lista para poder usar la función «len()»),
+nos imprima los elementos. Cuando el contador sea igual a la cantidad de elementos del diccionario, ya habrá iterado por todos y podrá parar. Imprimimos tanto el valor como la llave
+del diccionario con índice igual al contador actual, en este caso 0, primer elemento de nuestro diccionario convertido a lista. Cuando lo hace, vuelve a empezar y compara el contador con el
+número de elementos…
+¡Vaya!, ya veo el error. El contador siempre es cero, así que siempre será inferior al tamaño del diccionario y me imprimirá el elemento con índice 0 infinitas veces.
+Si retocamos un poco el código:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Compra:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">contador</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">contador</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">compra_frutas</span><span class="o">.</span><span class="n">items</span><span class="p">())):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">compra_frutas</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="n">contador</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">compra_frutas</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="n">contador</span><span class="p">]</span><span class="si">}</span><span class="s2">(s)&quot;</span><span class="p">)</span>
+    <span class="n">contador</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Compra:</span>
+
+<span class="go">3 manzana(s)</span>
+<span class="go">1 pera(s)</span>
+<span class="go">8 plátano(s)</span>
+<span class="go">20 fresa(s)</span>
+</pre></div>
+</div>
+<p>Hemos incorporado una línea que suma 1 al contador cada vez que itera, de tal manera que sabrá cuántas veces lo ha hecho y podrá parar al llegar al final.
+Como veis <em>for</em> y <em>while</em> se pueden usar para lo mismo. Entonces, ¿cúando nos interesa usar <em>while</em>? Cuando, por ejemplo, queremos iterar indefinidamente hasta que
+algo ocurra.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">input_usuario</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Escribe algo (pon &#39;stop&#39; para parar): &quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">input_usuario</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;stop&#39;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Saliendo del bucle. ¡Gracias! - Firmado: Bill :)&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Has escrito: </span><span class="si">{</span><span class="n">user_input</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Este bucle es infinito porque True es siempre verdad. Si el usuario escribe cualquier cosa que no sea stop, el bucle continuará hasta el infinito. Cuando ponga stop,
+el <em>if</em> pillará el input del usuario y romperá el bucle. En vez de break podríamos devolver False y cambiar el True, pero «romper» en inglés ilustra mejor lo que
+queremos conseguir. Y esto sería todo, si no entendéis algo podéis iterar sobre estas explicaciones todo lo que queráis (lo sé, el Rey del Humor me llaman).</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">M3C5</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navegación</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="conditionals.html">Condicionales</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Bucles</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#for">for</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#while">while</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="list_comprehension.html">Comprensión de listas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Funciones</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="conditionals.html" title="capítulo anterior">Condicionales</a></li>
+      <li>Next: <a href="list_comprehension.html" title="próximo capítulo">Comprensión de listas</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Endika de la Iglesia.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/bucles.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
