@@ -1,7 +1,7 @@
 .. M3C5 documentation master file, created by
    sphinx-quickstart on Thu Feb  8 15:20:40 2024.
    You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+   contain the root `toctree` directive. sphinx-build -M html docs/source docs/build
 
 ¡Bienvenido a la documentación del ejercicio M3C5!
 ================================

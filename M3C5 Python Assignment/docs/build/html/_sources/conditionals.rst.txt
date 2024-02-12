@@ -58,7 +58,7 @@ else
 
 Cuando he descrito un condicional por primera vez, he mencionado que si se cumple, ocurre algo. Pero ¿si no ocurre?
 «Si no» o «en cualquier otro caso» se repesentan con *else* en Python. Volviendo al ejemplo del casino, si tenemos 18 
-o más años somos mayores de edad y tinemos acceso, si no tenemos esa edad, somos menores y no podemos entrar. Ahí, usamos
+o más años somos mayores de edad y tenemos acceso, si no tenemos esa edad, somos menores y no podemos entrar. Ahí, usamos
 el *else*, para capturar todo lo que nuestro condicional no pilla, en este caso, si la edad no es de 18 años o más, tiene
 que tener sí o sí un número entre 0 y 17 (incluido). El término *else* se encargará de ello.
 
