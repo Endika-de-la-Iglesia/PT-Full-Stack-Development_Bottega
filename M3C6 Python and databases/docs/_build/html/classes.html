@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+
+<html lang="es" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Clases en Python &#8212; documentación de M3C6 - 0.0.1</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=6fcc102b"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=efdbd0b9"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="APIs" href="apis.html" />
+    <link rel="prev" title="¡Bienvenido a la documentación del ejercicio M3C6!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="clases-en-python">
+<h1>Clases en Python<a class="headerlink" href="#clases-en-python" title="Link to this heading">¶</a></h1>
+<p>Python es un lenguaje de programación orientado a los objetos (OOP del inglés), ya que permite trabajar con
+los elementos o unidades del código que se denominan objetos. Todo en Python son objetos: las variables, las funciones…
+Voy a generar una cadena de texto dentro de una variable, es decir, un objeto.
+Mediante la función <code class="docutils literal notranslate"><span class="pre">type()</span></code>, vamos a ver qué tipo de objeto es.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">frase</span> <span class="o">=</span> <span class="s2">&quot;Esto es un objeto de Python&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">frase</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">&lt;class &#39;str&#39;&gt;</span>
+</pre></div>
+</div>
+<p>Como era de esperar, el objeto es de tipo <code class="docutils literal notranslate"><span class="pre">str</span></code>, o lo que es lo mismo, texto. Si nos fijamos en el <em>output</em>, la palabra
+utilizada no es tipo sino clase. Pero ¿qué quiere decir exactamente el término clase? Una clase en Python es la plantilla
+que se sigue para generar un objeto y darle una serie de características, denominadas atributos. Objetos de una misma clase,
+de un mismo tipo, comparten una serie de propiedades, que los definen como objetos de esa clase, y una serie de funciones
+ejecutables sobre ese tipo de objetos, denominadas métodos. Podríamos resumir, de manera muy general, que una
+clase es el conjunto de instrucciones a seguir que nos dara un objeto determinado. Si creamos un objeto siguiendo esas instrucciones,
+creamos un objeto de una clase específica, y se dice que estamos generando una instancia de esa clase. Lo bueno que tienen las clases es que
+no tenemos que repetir constantemente código para generar objetos parecidos de un mismo tipo. Además, podemos establecer que métodos (funciones)
+podemos aplicarles a esos objetos. Esto nos permite trabajar de manera más eficiente con esos objetos que tantas similitudes comparten.
+Todo esto puede resultar un tanto abstracto, por ese motivo, lo voy a explicar paso a paso con un ejemplo. Empezaremos por crear una clase.</p>
+<section id="metodo-init-self">
+<h2>Método __init__(self)<a class="headerlink" href="#metodo-init-self" title="Link to this heading">¶</a></h2>
+<p>Me encantan los juegos de rol y, últimamente, me he dedicado a jugar varias partidas del conocidísimo juego de rol <em>Dragones y Mazmorras</em> (D&amp;D para los amigos).
+La primera vez que escuché el término clase para Python, mi mente se fue directamente a pensar sobre las clases de los personajes de los juegos de rol.
+Por eso, vamos a ver cómo crear una clase en Python como si de un juego de rol se tratara. Cuando se empieza una partida, es muy importante crear nuestro personaje,
+darle un nombre, elegir la raza y ese tipo de características. Definamos la clase de «Personaje» en Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Personaje</span><span class="p">:</span>
+    <span class="n">juego</span> <span class="o">=</span> <span class="s2">&quot;D&amp;D&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">raza</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nombre</span> <span class="o">=</span> <span class="n">nombre</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">raza</span> <span class="o">=</span> <span class="n">raza</span>
+</pre></div>
+</div>
+<p>Aquí hemos creado una clase llamada «Personaje», que tiene un atributo de clase llamado juego, que nos
+indica de qué juego es este personaje. Todos los personajes que creemos con esta clase tendrán el atributo de clase de ser pertenecientes a «D&amp;D».
+No queremos que, de repente, nuestro personaje sea de «Pokémon».</p>
+<p>Debajo definimos el método <code class="docutils literal notranslate"><span class="pre">__init__(self)</span></code>, también conocido como constructor. Cada vez que queramos crear un objeto del tipo personaje, «init»
+será llamado de <strong>manera automática</strong> para construir esa instancia y le añadira los parámetros que le pasemos. El término «init» está rodeado
+por dos guiones bajos a cada lado, llamados <em>underscore</em>, y, como son dobles, los llaman <em>double underscore</em> o <strong>dunder</strong>. Esos guiones simplemente
+nos indican que init es un método (una función) especial de Python, en este ejemplo, un constructor de instancias de clase (para ver más ejemplos de
+funciones dunder pinchar <a class="reference external" href="https://www.geeksforgeeks.org/dunder-magic-methods-python/">aquí</a>). Como veis, el constructor requiere tres parámetros.
+Self hace referencia al objeto mismo que se está generando en ese momento, y nombre y raza hacen referencia a dos atributos de esa instancia en concreto.
+Todos los personajes tienen el atributo de clase de ser de D&amp;D, pero cada uno tendrá sus atributos de instancia (de objeto/personaje) específicos, en este caso,
+un nombre y una raza propia. Creemos dos personajes para ver cómo se hace:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">personaje_uno</span> <span class="o">=</span> <span class="n">Personaje</span><span class="p">(</span><span class="s2">&quot;Legolas&quot;</span><span class="p">,</span> <span class="s2">&quot;Elfo del Bosque&quot;</span><span class="p">)</span>
+<span class="n">personaje_dos</span> <span class="o">=</span> <span class="n">Personaje</span><span class="p">(</span><span class="s2">&quot;Gimli&quot;</span><span class="p">,</span> <span class="s2">&quot;Enano&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Hemos creado dos instancias de la clase personaje, cada una necesita un nombre y una raza (atributos de instancia) para pasárselos al método «init» que es
+llamado de forma automática al crear una instancia.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">personaje_dos</span><span class="o">.</span><span class="n">raza</span> <span class="o">=</span> <span class="s2">&quot;Elfo del Bosque&quot;</span>
+</pre></div>
+</div>
+<p>Resulta que un graciosillo ha decidido poner que Gimli, al que no le caen muy bien los elfos, es uno de ellos. ¿Qué podemos hacer para que otros jugadores
+no accedan y cambien el valor asignado al atributo de raza del personaje? Podemos «proteger» la variable poniendo «_» delante del nombre.
+De esta manera indicaremos a los que vean el código que no pueden andar variando los valores de esos atributos.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Personaje</span><span class="p">:</span>
+    <span class="n">juego</span> <span class="o">=</span> <span class="s2">&quot;D&amp;D&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">raza</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nombre</span> <span class="o">=</span> <span class="n">nombre</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_raza</span> <span class="o">=</span> <span class="n">raza</span>
+
+    <span class="k">def</span> <span class="nf">raza</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raza</span>
+
+<span class="n">personaje_uno</span> <span class="o">=</span> <span class="n">Personaje</span><span class="p">(</span><span class="s2">&quot;Legolas&quot;</span><span class="p">,</span> <span class="s2">&quot;Elfo del Bosque&quot;</span><span class="p">)</span>
+<span class="n">personaje_dos</span> <span class="o">=</span> <span class="n">Personaje</span><span class="p">(</span><span class="s2">&quot;Gimli&quot;</span><span class="p">,</span> <span class="s2">&quot;Enano&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">personaje_uno</span><span class="o">.</span><span class="n">raza</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">personaje_dos</span><span class="o">.</span><span class="n">raza</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Elfo del Bosque</span>
+<span class="go">Enano</span>
+</pre></div>
+</div>
+<p>Hemos protegido nuestros atributos de personaje con «_» y, además, hemos creado un método en la clase (<code class="docutils literal notranslate"><span class="pre">raza(self)</span></code>) que nos devuelve la raza del personaje.
+Si ahora el listillo de antes quiere jugárnosla, tendrá que usar <code class="docutils literal notranslate"><span class="pre">personaje_dos._raza</span> <span class="pre">=</span> <span class="pre">&quot;Elfo</span> <span class="pre">del</span> <span class="pre">Bosque&quot;</span></code> y no
+<code class="docutils literal notranslate"><span class="pre">personaje_dos.raza</span> <span class="pre">=</span> <span class="pre">&quot;Elfo</span> <span class="pre">del</span> <span class="pre">Bosque&quot;</span></code> para
+cambiar el valor del atributo. Aunque si tiene decencia como programador, no lo hará; nuestra declaración de intenciones
+de que no lo toque con «_» es bastante
+clara. Nos han quedado unos personaje un poco sosos, les faltan unos cuantos métodos para que podamos considerarlos
+competentes en las aventuras que les esperan.</p>
+</section>
+<section id="metodos-y-decoradores">
+<h2>Métodos y decoradores<a class="headerlink" href="#metodos-y-decoradores" title="Link to this heading">¶</a></h2>
+<p>Como ya hemos visto, los métodos son las funciones específicas de nuestra clase. Se definen con <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">nombre_función()</span></code>,
+como las funciones normales de Python.
+Vamos a añadirles a nuestros personajes la capacidad de atacar a los enemigos mediante un método. Vamos a añadir
+una función para poder pedirle el nombre a
+cada personaje <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">nombre()</span></code> y vamos añadir otra para que ataquen (<code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">ataque()</span></code>). Cabe destacar que todos
+estos métodos tendrán a self como argumento
+posicional para tener accesso a toda la información, variables y atributos de la clase Personaje. Para que sea
+más realista el ataque, he implementado un dado
+de veinte caras (como en D&amp;D) que sacará un número entre 1 y 20 incluidos para determinar el éxito del ataque
+(gestionado por medio de condicionales).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">class</span> <span class="nc">Personaje</span><span class="p">:</span>
+    <span class="n">juego</span> <span class="o">=</span> <span class="s2">&quot;D&amp;D&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">raza</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nombre</span> <span class="o">=</span> <span class="n">nombre</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_raza</span> <span class="o">=</span> <span class="n">raza</span>
+
+    <span class="k">def</span> <span class="nf">raza</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raza</span>
+
+    <span class="k">def</span> <span class="nf">nombre</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nombre</span>
+
+    <span class="k">def</span> <span class="nf">ataque</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">dado</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dado</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">resultado</span> <span class="o">=</span> <span class="s2">&quot;Pifia&quot;</span>
+        <span class="k">elif</span> <span class="n">dado</span> <span class="o">==</span> <span class="mi">20</span><span class="p">:</span>
+            <span class="n">resultado</span> <span class="o">=</span> <span class="s2">&quot;Crítico&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">resultado</span> <span class="o">=</span> <span class="s2">&quot;Daño normal&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dado</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">resultado</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+<span class="n">personaje_uno</span> <span class="o">=</span> <span class="n">Personaje</span><span class="p">(</span><span class="s2">&quot;Legolas&quot;</span><span class="p">,</span> <span class="s2">&quot;Elfo del Bosque&quot;</span><span class="p">)</span>
+<span class="n">personaje_dos</span> <span class="o">=</span> <span class="n">Personaje</span><span class="p">(</span><span class="s2">&quot;Gimli&quot;</span><span class="p">,</span> <span class="s2">&quot;Enano&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">personaje_uno</span><span class="o">.</span><span class="n">nombre</span><span class="p">()</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">personaje_uno</span><span class="o">.</span><span class="n">ataque</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">personaje_dos</span><span class="o">.</span><span class="n">nombre</span><span class="p">()</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">personaje_dos</span><span class="o">.</span><span class="n">ataque</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Legolas: 13 (Daño normal)</span>
+<span class="go">Gimli: 20 (Crítico)</span>
+</pre></div>
+</div>
+<p>Fijaos en que llamamos a cada método después del objeto <code class="docutils literal notranslate"><span class="pre">personaje_uno.ataque()</span></code>, esto se hace así debido a
+que son funciones específicas de la instancia de la
+clase Personaje. Todos los objetos que pongamos que no sean Personajes no podrán atacar (llamar al método <code class="docutils literal notranslate"><span class="pre">ataque()</span></code>).
+¡Parece que Gimli ha tenido suerte en su tirada
+y ha hecho un crítico!</p>
+<p>El rol es más complejo que esto, y las funciones de Python también. De hecho, existen los decoradores de función, o método, que nos permiten
+dar una mayor versatilidad y modificar nuestras funciones. Veamos primero, antes de usar ningún decorador,
+cómo una función puede ser el argumento de otra para dar
+unos resultados determinados. En este caso queremos poder aplicar el resultado de los dados a tres de las
+posibles acciones que puede realizar nuestro personaje en
+su turno (atacar, defender o conversar).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">class</span> <span class="nc">Personaje</span><span class="p">:</span>
+    <span class="n">juego</span> <span class="o">=</span> <span class="s2">&quot;D&amp;D&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">raza</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nombre</span> <span class="o">=</span> <span class="n">nombre</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_raza</span> <span class="o">=</span> <span class="n">raza</span>
+
+    <span class="k">def</span> <span class="nf">raza</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raza</span>
+
+    <span class="k">def</span> <span class="nf">nombre</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nombre</span>
+
+<span class="hll">    <span class="k">def</span> <span class="nf">ataque_func</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class="hll">        <span class="k">return</span> <span class="s2">&quot;Ataque&quot;</span>
+</span>
+<span class="hll">    <span class="k">def</span> <span class="nf">defensa_func</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class="hll">        <span class="k">return</span> <span class="s2">&quot;Defensa&quot;</span>
+</span>
+<span class="hll">    <span class="k">def</span> <span class="nf">hablar_func</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class="hll">        <span class="k">return</span> <span class="s2">&quot;Conversación&quot;</span>
+</span>
+<span class="hll">    <span class="k">def</span> <span class="nf">dado</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+</span><span class="hll">        <span class="k">def</span> <span class="nf">wrapper</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class="hll">            <span class="n">dado</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+</span><span class="hll">            <span class="k">if</span> <span class="n">dado</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span><span class="hll">                <span class="n">resultado</span> <span class="o">=</span> <span class="s2">&quot;Pifia&quot;</span>
+</span><span class="hll">            <span class="k">elif</span> <span class="n">dado</span> <span class="o">==</span> <span class="mi">20</span><span class="p">:</span>
+</span><span class="hll">                <span class="n">resultado</span> <span class="o">=</span> <span class="s2">&quot;Crítico&quot;</span>
+</span><span class="hll">            <span class="k">else</span><span class="p">:</span>
+</span><span class="hll">                <span class="n">resultado</span> <span class="o">=</span> <span class="s2">&quot;Normal&quot;</span>
+</span><span class="hll">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_nombre</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">dado</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">resultado</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</span><span class="hll">        <span class="k">return</span> <span class="n">wrapper</span>
+</span>
+<span class="hll">    <span class="n">ataque</span> <span class="o">=</span> <span class="n">dado</span><span class="p">(</span><span class="n">ataque_func</span><span class="p">)</span>
+</span><span class="hll">    <span class="n">defensa</span> <span class="o">=</span> <span class="n">dado</span><span class="p">(</span><span class="n">defensa_func</span><span class="p">)</span>
+</span><span class="hll">    <span class="n">hablar</span> <span class="o">=</span> <span class="n">dado</span><span class="p">(</span><span class="n">hablar_func</span><span class="p">)</span>
+</span>
+<span class="n">personaje_uno</span> <span class="o">=</span> <span class="n">Personaje</span><span class="p">(</span><span class="s2">&quot;Legolas&quot;</span><span class="p">,</span> <span class="s2">&quot;Elfo del Bosque&quot;</span><span class="p">)</span>
+<span class="n">personaje_dos</span> <span class="o">=</span> <span class="n">Personaje</span><span class="p">(</span><span class="s2">&quot;Gimli&quot;</span><span class="p">,</span> <span class="s2">&quot;Enano&quot;</span><span class="p">)</span>
+<span class="n">personaje_uno</span><span class="o">.</span><span class="n">ataque</span><span class="p">()</span>
+<span class="n">personaje_uno</span><span class="o">.</span><span class="n">defensa</span><span class="p">()</span>
+<span class="n">personaje_uno</span><span class="o">.</span><span class="n">hablar</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Legolas: Ataque - 9 (Normal)</span>
+<span class="go">Legolas: Defensa - 3 (Normal)</span>
+<span class="go">Legolas: Conversación - 12 (Normal)</span>
+</pre></div>
+</div>
+<p>En las líneas resaltadas muestro cómo se crea una nueva función <code class="docutils literal notranslate"><span class="pre">dado()</span></code> que acepta una función como argumento
+y devuelve una función (<code class="docutils literal notranslate"><span class="pre">wrapper()</span></code>) que
+modifica el efecto de las tres funciones de acción de nuestro personaje. Asimismo, he generado tres variables,
+o atributos, dentro de la clase que pasan
+las funciones de interés (<code class="docutils literal notranslate"><span class="pre">ataque_func()</span></code>, <code class="docutils literal notranslate"><span class="pre">defensa_func()</span></code>, <code class="docutils literal notranslate"><span class="pre">hablar_func</span></code>) como argumentos de la función <code class="docutils literal notranslate"><span class="pre">dado()</span></code>.
+Los decoradores de esas funciones nos permiten ponerlo un poco más limpio, pero a efectos
+prácticos es lo mismo, cambiar la funcionalidad y comportamiento de un método sin necesidad de reescribir cada método
+indivualmente, evitando, además, repeticiones innecesarias
+del código. Los decoradores se indican por medio de <code class="docutils literal notranslate"><span class="pre">&#64;nombre_del_decorador</span></code>, en el ejemplo del dado, <code class="docutils literal notranslate"><span class="pre">&#64;dado</span></code> será
+el decorador de cada método de acción de personaje.
+Ese decorado modificará el comportamiento de cada método y, cuando sean llamados para la instancia, no sólo devolverán
+un texto, sino que activarán la función <code class="docutils literal notranslate"><span class="pre">dado()</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">class</span> <span class="nc">Personaje</span><span class="p">:</span>
+    <span class="n">juego</span> <span class="o">=</span> <span class="s2">&quot;D&amp;D&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">raza</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nombre</span> <span class="o">=</span> <span class="n">nombre</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_raza</span> <span class="o">=</span> <span class="n">raza</span>
+
+    <span class="k">def</span> <span class="nf">raza</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raza</span>
+
+    <span class="k">def</span> <span class="nf">nombre</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nombre</span>
+
+    <span class="k">def</span> <span class="nf">dado</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">wrapper</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="n">dado</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">dado</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">resultado</span> <span class="o">=</span> <span class="s2">&quot;Pifia&quot;</span>
+            <span class="k">elif</span> <span class="n">dado</span> <span class="o">==</span> <span class="mi">20</span><span class="p">:</span>
+                <span class="n">resultado</span> <span class="o">=</span> <span class="s2">&quot;Crítico&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">resultado</span> <span class="o">=</span> <span class="s2">&quot;Normal&quot;</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_nombre</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">dado</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">resultado</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="hll">    <span class="nd">@dado</span>
+</span>    <span class="k">def</span> <span class="nf">ataque</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Ataque&quot;</span>
+
+<span class="hll">    <span class="nd">@dado</span>
+</span>    <span class="k">def</span> <span class="nf">defensa</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Defensa&quot;</span>
+
+<span class="hll">    <span class="nd">@dado</span>
+</span>    <span class="k">def</span> <span class="nf">hablar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Conversación&quot;</span>
+
+<span class="n">personaje_uno</span> <span class="o">=</span> <span class="n">Personaje</span><span class="p">(</span><span class="s2">&quot;Legolas&quot;</span><span class="p">,</span> <span class="s2">&quot;Elfo del Bosque&quot;</span><span class="p">)</span>
+<span class="n">personaje_dos</span> <span class="o">=</span> <span class="n">Personaje</span><span class="p">(</span><span class="s2">&quot;Gimli&quot;</span><span class="p">,</span> <span class="s2">&quot;Enano&quot;</span><span class="p">)</span>
+<span class="n">personaje_uno</span><span class="o">.</span><span class="n">ataque</span><span class="p">()</span>
+<span class="n">personaje_uno</span><span class="o">.</span><span class="n">defensa</span><span class="p">()</span>
+<span class="n">personaje_uno</span><span class="o">.</span><span class="n">hablar</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Legolas: Ataque - 18 (Normal)</span>
+<span class="go">Legolas: Defensa - 2 (Normal)</span>
+<span class="go">Legolas: Conversación - 20 (Crítico)</span>
+</pre></div>
+</div>
+<p>Como podéis apreciar, hemos decorado tres de los métodos de la clase personaje, para tener el mismo efecto que en
+el código anterior (nótese la importancia de declarar
+la función dado antes de usarla como decorador).</p>
+<p>Dentro de las clases, existen dos
+decoradores clásicos relacionados con la capacidad de acceder a los atributos de la instancia de la clase y
+poder, o no, modificarlos si queremos. Esos decoradores son
+<code class="docutils literal notranslate"><span class="pre">&#64;property</span></code>, un decorador que aplica la función <code class="docutils literal notranslate"><span class="pre">getter()</span></code> para obtener información sobre un atributo, y <code class="docutils literal notranslate"><span class="pre">atributo.setter()</span></code>, un decorador que permite modificar
+el valor del atributo de interés. Voy a añadir, como es típico en los juegos de rol, un nivel a los personajes,
+y, con los dos decoradores clásicos, voy a permitir que
+se pueda consultar el nivel y se pueda incrementar cuando los personajes ganen experiencia.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">class</span> <span class="nc">Personaje</span><span class="p">:</span>
+    <span class="n">juego</span> <span class="o">=</span> <span class="s2">&quot;D&amp;D&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">raza</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nombre</span> <span class="o">=</span> <span class="n">nombre</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_raza</span> <span class="o">=</span> <span class="n">raza</span>
+<span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">_nivel</span> <span class="o">=</span> <span class="mi">1</span>
+</span>
+    <span class="k">def</span> <span class="nf">raza</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raza</span>
+
+    <span class="k">def</span> <span class="nf">nombre</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nombre</span>
+
+<span class="hll">    <span class="nd">@property</span>
+</span><span class="hll">    <span class="k">def</span> <span class="nf">nivel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class="hll">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nivel</span>
+</span>
+<span class="hll">    <span class="nd">@nivel</span><span class="o">.</span><span class="n">setter</span>
+</span><span class="hll">    <span class="k">def</span> <span class="nf">nivel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+</span><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">_nivel</span> <span class="o">=</span> <span class="n">num</span>
+</span>
+    <span class="k">def</span> <span class="nf">dado</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">wrapper</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="n">dado</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">dado</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">resultado</span> <span class="o">=</span> <span class="s2">&quot;Pifia&quot;</span>
+            <span class="k">elif</span> <span class="n">dado</span> <span class="o">==</span> <span class="mi">20</span><span class="p">:</span>
+                <span class="n">resultado</span> <span class="o">=</span> <span class="s2">&quot;Crítico&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">resultado</span> <span class="o">=</span> <span class="s2">&quot;Normal&quot;</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_nombre</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">dado</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">resultado</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">wrapper</span>
+
+    <span class="nd">@dado</span>
+    <span class="k">def</span> <span class="nf">ataque</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Ataque&quot;</span>
+
+    <span class="nd">@dado</span>
+    <span class="k">def</span> <span class="nf">defensa</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Defensa&quot;</span>
+
+    <span class="nd">@dado</span>
+    <span class="k">def</span> <span class="nf">hablar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Conversación&quot;</span>
+
+
+
+<span class="n">personaje_uno</span> <span class="o">=</span> <span class="n">Personaje</span><span class="p">(</span><span class="s2">&quot;Legolas&quot;</span><span class="p">,</span> <span class="s2">&quot;Elfo del Bosque&quot;</span><span class="p">)</span>
+<span class="n">personaje_dos</span> <span class="o">=</span> <span class="n">Personaje</span><span class="p">(</span><span class="s2">&quot;Gimli&quot;</span><span class="p">,</span> <span class="s2">&quot;Enano&quot;</span><span class="p">)</span>
+<span class="hll"><span class="nb">print</span><span class="p">(</span><span class="n">personaje_uno</span><span class="o">.</span><span class="n">nombre</span><span class="p">())</span>
+</span><span class="hll"><span class="nb">print</span><span class="p">(</span><span class="n">personaje_uno</span><span class="o">.</span><span class="n">nivel</span><span class="p">)</span>
+</span><span class="hll"><span class="n">personaje_uno</span><span class="o">.</span><span class="n">nivel</span> <span class="o">=</span> <span class="n">personaje_uno</span><span class="o">.</span><span class="n">nivel</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span class="hll"><span class="nb">print</span><span class="p">(</span><span class="n">personaje_uno</span><span class="o">.</span><span class="n">nivel</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Legolas</span>
+<span class="go">1</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+<p>Aquí vemos el uso de esos dos decoradores con claridad. He generado un atributo que indica el nivel del personaje
+(con un valor predeterminado de 1) y gracias
+al decorador <code class="docutils literal notranslate"><span class="pre">&#64;property</span></code> podemos llamar a ese atributo de nuestra instancia (personaje_uno) y verlo. Es importante
+ver que para consultar el nombre del personaje tenemos
+que llamar a la función <code class="docutils literal notranslate"><span class="pre">nombre()</span></code> y no podemos hacer <code class="docutils literal notranslate"><span class="pre">personaje_uno.nombre</span></code>, ya que esa función no está decorada
+(modificada) con el decorador de propiedad.
+Cuando queremos subir de nivel al personaje, como tenemos un decorador de tipo setter, podemos ajustar de nuevo el
+valor del atributo nivel, en este caso a nivel 2.</p>
+</section>
+<section id="polimorfismo-y-herencia-de-clases">
+<h2>Polimorfismo y herencia de clases<a class="headerlink" href="#polimorfismo-y-herencia-de-clases" title="Link to this heading">¶</a></h2>
+<p>Polimofrismo hace referencia a la capacidad de una función, método o, incluso, clase de trabajar con diferentes tipos
+de objeto y comportarse de manera distinta
+dependiendo de la situación. Para ilustrarlo mejor, voy a mostrar una herencia de clases con mi ejemplo de los personajes
+de rol, para ver con
+claridad cómo el comportamiento de una clase puede cambiar de manera dinámica y adoptar varias formas acorde a ello.
+En los juegos de rol, los personajes pueden ser
+de varios tipos. Un elfo como Legolas sería un buen personaje explorador, mientras que Gimli pegaría bastante como bárbaro,
+usando su fuerza bruta. En este ejemplo, voy
+a crear dos subclases de personaje, explorador y bárbaro, que heredarán atributos de la clase principal
+personaje, pero que modificarán, mediante polimorfismo, algunos de los
+métodos.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">dado</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrapper</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">dado</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dado</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">resultado</span> <span class="o">=</span> <span class="s2">&quot;Pifia&quot;</span>
+        <span class="k">elif</span> <span class="n">dado</span> <span class="o">==</span> <span class="mi">20</span><span class="p">:</span>
+            <span class="n">resultado</span> <span class="o">=</span> <span class="s2">&quot;Crítico&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">resultado</span> <span class="o">=</span> <span class="s2">&quot;Normal&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_nombre</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">dado</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">resultado</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="k">class</span> <span class="nc">Personaje</span><span class="p">:</span>
+    <span class="n">juego</span> <span class="o">=</span> <span class="s2">&quot;D&amp;D&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">raza</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nombre</span> <span class="o">=</span> <span class="n">nombre</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_raza</span> <span class="o">=</span> <span class="n">raza</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nivel</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">raza</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raza</span>
+
+    <span class="k">def</span> <span class="nf">nombre</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nombre</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">nivel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nivel</span>
+
+    <span class="nd">@nivel</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">nivel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nivel</span> <span class="o">=</span> <span class="n">num</span>
+
+    <span class="nd">@dado</span>
+    <span class="k">def</span> <span class="nf">ataque</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Ataque&quot;</span>
+
+    <span class="nd">@dado</span>
+    <span class="k">def</span> <span class="nf">defensa</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Defensa&quot;</span>
+
+    <span class="nd">@dado</span>
+    <span class="k">def</span> <span class="nf">hablar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Conversación&quot;</span>
+
+<span class="hll"><span class="k">class</span> <span class="nc">Explorador</span><span class="p">(</span><span class="n">Personaje</span><span class="p">):</span>
+</span><span class="hll">    <span class="nd">@dado</span>
+</span><span class="hll">    <span class="k">def</span> <span class="nf">hablar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class="hll">        <span class="k">return</span> <span class="s2">&quot;Observación y conversación diplomática&quot;</span>
+</span>
+<span class="hll"><span class="k">class</span> <span class="nc">Barbaro</span><span class="p">(</span><span class="n">Personaje</span><span class="p">):</span>
+</span><span class="hll">    <span class="nd">@dado</span>
+</span><span class="hll">    <span class="k">def</span> <span class="nf">hablar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class="hll">        <span class="k">return</span> <span class="s2">&quot;Ataque&quot;</span>
+</span>
+
+<span class="n">personaje_uno</span> <span class="o">=</span> <span class="n">Explorador</span><span class="p">(</span><span class="s2">&quot;Legolas&quot;</span><span class="p">,</span> <span class="s2">&quot;Elfo del Bosque&quot;</span><span class="p">)</span>
+<span class="n">personaje_dos</span> <span class="o">=</span> <span class="n">Barbaro</span><span class="p">(</span><span class="s2">&quot;Gimli&quot;</span><span class="p">,</span> <span class="s2">&quot;Enano&quot;</span><span class="p">)</span>
+<span class="n">personaje_uno</span><span class="o">.</span><span class="n">hablar</span><span class="p">()</span>
+<span class="n">personaje_dos</span><span class="o">.</span><span class="n">hablar</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Legolas: Observación y conversación diplomática - 9 (Normal)</span>
+<span class="go">Gimli: Ataque - 18 (Normal)</span>
+</pre></div>
+</div>
+<p>Aquí hay un claro caso de polimorfismo. Lo primero de todo, he sacado la función <code class="docutils literal notranslate"><span class="pre">dado()</span></code> de dentro
+de la clase personaje para poder decorar
+métodos de todas las clases y subclases. En segundo lugar, vemos que el método de hablar adquiere dos comportamientos, o formas,
+dependiendo de si son
+llamados por la clase de explorador o la clase de bárbaro (que por lo demás son idénticas a la de personaje).
+Cuando un objeto de la clase bárbaro, me refiero
+al pobre Gimli, utiliza el método hablar, ataca en lugar de conversar, dado que las palabras no son lo suyo.
+Esto puede ser muy útil para aportar distintos comportamientos
+en ciertos métodos provinientes de una misma clase. El ejemplo clásico en aplicaciones web es la distinción entre administradores,
+usuarios registrados y usuarios invitados;
+todos tienen atributos en común, pero algunos se ven modificados por su respectiva subclase para otorgar una flexibilidad
+en las acciones que cada uno puede realizar.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">M3C6</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navegación</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Clases en Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#metodo-init-self">Método __init__(self)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#metodos-y-decoradores">Métodos y decoradores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#polimorfismo-y-herencia-de-clases">Polimorfismo y herencia de clases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apis.html">APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mongodb.html">Bases de datos</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="capítulo anterior">¡Bienvenido a la documentación del ejercicio M3C6!</a></li>
+      <li>Next: <a href="apis.html" title="próximo capítulo">APIs</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Endika de la Iglesia.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/classes.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
