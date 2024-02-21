@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html lang="es" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Bases de datos &#8212; documentación de Curso Full Stack - 0.0.2</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=58349a41"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=efdbd0b9"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Javascript, conceptos básicos" href="m4c7_javascript.html" />
+    <link rel="prev" title="APIs" href="m3c6_apis.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="bases-de-datos">
+<h1>Bases de datos<a class="headerlink" href="#bases-de-datos" title="Link to this heading">¶</a></h1>
+<p>En la era de la información, las bases de datos desempeñan un papel crucial al almacenar y gestionar grandes cantidades de datos.
+Hay dos categorías principales de bases de datos: SQL (<em>Structured Query Language</em>) y NoSQL (<em>Not Only SQL</em>).</p>
+<section id="tipos-de-bases-de-datos">
+<h2>Tipos de bases de datos<a class="headerlink" href="#tipos-de-bases-de-datos" title="Link to this heading">¶</a></h2>
+<p><strong>Bases de datos SQL</strong></p>
+<p>Bases de datos en las que la búsqueda de datos se basa en un sistema estructurado. Utilizan modelos de datos estructurados y
+tablas para almacenar toda la información. Cada fila en una tabla representa un registro, y las relaciones entre tablas se gestionan
+mediante claves específicas. En un momento en el que el <em>smart data</em> (datos estratégicos correctamente clasificados y guardados de manera
+uniforme) está en auge para el desarrollo de modelos basados en <em>machine learning</em>, que permiten a las empresas tener una ventaja
+sobre el control de los datos, es importante tener bases de datos con estructuras estandarizadas. Por eso, las bases de datos SQL
+requieren un esquema fijo y predefinido, lo que significa que la estructura de la base de datos debe estar definida antes de insertar datos.</p>
+<p><strong>Bases de datos NoSQL</strong></p>
+<p>Las bases de datos NoSQL ofrecen flexibilidad en su esquema, ya que no tienen un formato fijo.
+Pueden manejar datos no estructurados o semiestructurados y permiten realizar cambios en el esquema de forma dinámica.
+Estas bases de datos pueden utilizar diversos modelos de datos, como documentos, clave-valor, columnares o basados en gráficos,
+adaptándose a las necesidades específicas de la aplicación en uso. Asimismo, están diseñadas para escalar horizontalmente, distribuyendo
+la carga en varios servidores para mejorar el rendimiento y la capacidad de almacenamiento.
+Este enfoque proporciona una mayor flexibilidad y escalabilidad en comparación con las bases de datos SQL tradicionales.</p>
+</section>
+<section id="mongodb-ejemplo-de-base-de-datos-nosql">
+<h2>MongoDB (ejemplo de base de datos NoSQL)<a class="headerlink" href="#mongodb-ejemplo-de-base-de-datos-nosql" title="Link to this heading">¶</a></h2>
+<p>MongoDB es una base de datos de tipo NoSQL que destaca por su enfoque en documentos y colecciones de documentos.</p>
+<p>Algunas características clave de MongoDB son:</p>
+<ul class="simple">
+<li><p>Documentos BSON: Almacena datos en formato BSON (Binary JSON), que es una representación binaria de JSON (notación de objetos de Javascript). Cada registro es un documento flexible con pares clave-valor, independiente del resto de registros.</p></li>
+<li><p>Esquema dinámico: Permite esquemas dinámicos, lo que significa que cada documento en una colección puede tener un esquema diferente.</p></li>
+<li><p>Escalabilidad horizontal: Puede escalar horizontalmente de manera eficiente al distribuir los datos en clústeres y agregar más nodos según sea necesario.</p></li>
+<li><p>Buena para datos no estructurados: Ideal para almacenar y procesar datos no estructurados o semiestructurados, como documentos, logrando flexibilidad y velocidad.</p></li>
+</ul>
+<p>En conclusión, MongoDB es una base de datos que destaca por su flexibilidad,
+escalabilidad horizontal y capacidad para manejar datos no estructurados, es decir, las características de una base de datos NoSQL,
+lo que la hace adecuada para aplicaciones modernas con requisitos de almacenamiento de datos dinámicos, tanto en tamaño como en tipo.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Curso Full Stack</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navegación</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="m3c5_conditionals.html">Condicionales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m3c5_bucles.html">Bucles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m3c5_list_comprehension.html">Comprensión de listas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m3c5_functions.html">Funciones</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="m3c6_classes.html">Clases en Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m3c6_apis.html">APIs</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Bases de datos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#tipos-de-bases-de-datos">Tipos de bases de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mongodb-ejemplo-de-base-de-datos-nosql">MongoDB (ejemplo de base de datos NoSQL)</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="m4c7_javascript.html">Javascript, conceptos básicos</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="m3c6_apis.html" title="capítulo anterior">APIs</a></li>
+      <li>Next: <a href="m4c7_javascript.html" title="próximo capítulo">Javascript, conceptos básicos</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Endika de la Iglesia.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/m3c6_mongodb.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
