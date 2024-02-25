@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="es" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Comprensión de listas &#8212; documentación de Curso Full Stack - 0.0.2</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=58349a41"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/translations.js?v=efdbd0b9"></script>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="Funciones" href="m3c5_functions.html" />
+    <link rel="prev" title="Bucles" href="m3c5_bucles.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="comprension-de-listas">
+<h1>Comprensión de listas<a class="headerlink" href="#comprension-de-listas" title="Link to this heading">¶</a></h1>
+<p>Las listas son unos objetos muy útiles en Python para almacenar otros elementos. Podemos escribir las listas directamente o podemos
+recurrir a una sintaxis sencilla si la queremos generar a partir de elementos iterables (si no sabes lo que es un elemento iterable,
+mira la sección de bucles de esta documentación). Si alguien te pide que hagas la lista del 1 al
+20, una opción, muy cansada y poco acertada, sería escribirlo directamente. Aquí está (me sacrifico por el equipo):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lista_num</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>He parado, me estaba empezando a dar el síndrome del túnel carpiano. Vamos a crear la lista con ayuda de un bucle <em>for</em>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lista_num</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">):</span>
+    <span class="n">lista_num</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lista_num</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]</span>
+</pre></div>
+</div>
+<p>Hemos creado una lista vacía y hemos iterado del 1 al 20 (recordad que el 21 marca el último número del rango, pero se excluye) agregando cada número
+a la lista. Siguen siendo muchas líneas de texto, esto es código en Python, no la Biblia Parte 2. Para reducir todo a una línea podemos usar la comprensión
+de listas.</p>
+<section id="compresion-de-lista-con-for">
+<h2>Compresión de lista con <em>for</em><a class="headerlink" href="#compresion-de-lista-con-for" title="Link to this heading">¶</a></h2>
+<p>Veamos como es la sintaxis para generar la lista en una línea.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lista_num</span> <span class="o">=</span> <span class="p">[</span><span class="n">num</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span> <span class="p">,</span><span class="mi">21</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lista_num</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]</span>
+</pre></div>
+</div>
+<p>Ponemos [] para generar la lista y dentro escribimos aquello que queremos que esté en la lista (num, lo que está dentro del bucle) seguido del bucle. Pero no sólo podemos usar bucles <em>for</em>
+en la comprensión de listas, también podemos añadir condicionales tras el bucle mediante el uso de <em>if</em>.</p>
+</section>
+<section id="compresion-de-lista-con-for-e-if">
+<h2>Compresión de lista con <em>for</em> e <em>if</em><a class="headerlink" href="#compresion-de-lista-con-for-e-if" title="Link to this heading">¶</a></h2>
+<p>Si en el ejemplo anterior quisieramos iterar por los veinte primeros números, pero únicamente añadir los múltiplos de 3 a la lista, podríamos usar el operador módulo <em>%</em> para ver
+aquellos números que al ser divididos por 3 dan un resto de 0.</p>
+<p>Ejemplo con bucles y condicionales anidados:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lista_num</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">lista_num</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lista_num</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">[3, 6, 9, 12, 15, 18]</span>
+</pre></div>
+</div>
+<p>Lo mismo pero recurriendo a comprensión de listas:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lista_num</span> <span class="o">=</span> <span class="p">[</span><span class="n">num</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span> <span class="p">,</span><span class="mi">21</span><span class="p">)</span> <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lista_num</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">[3, 6, 9, 12, 15, 18]</span>
+</pre></div>
+</div>
+<p>Esto se podría complicar aún más usando <em>else</em> o varios condicionales a la vez para poblar nuestra lista. Como habéis podido ver, el uso de comprensión de listas permite generarlas
+recurriendo a iteraciones y condicionales usando sólo una línea de código. En casos más complejos, con muchos condicionales y opciones, sería más claro, desde el punto de vista
+del que lea el código, usar bucles y condicionales anidados.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Curso Full Stack</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navegación</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="m3c5_index.html">M3C5 (Python)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="m3c5_conditionals.html">Condicionales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m3c5_bucles.html">Bucles</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Comprensión de listas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m3c5_functions.html">Funciones</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../m3c6/m3c6_index.html">M3C6 (Python y bases de datos)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m4c7/m4c7_index.html">M4C7 (Javascript)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m4c8/m4c8_index.html">M4C8 (Javascript)</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="m3c5_index.html">M3C5 (Python)</a><ul>
+      <li>Previous: <a href="m3c5_bucles.html" title="capítulo anterior">Bucles</a></li>
+      <li>Next: <a href="m3c5_functions.html" title="próximo capítulo">Funciones</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Endika de la Iglesia.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="../../_sources/rst_files/m3c5/m3c5_list_comprehension.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

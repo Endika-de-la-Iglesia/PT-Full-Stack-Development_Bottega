@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html lang="es" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Funciones &#8212; documentación de Curso Full Stack - 0.0.2</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=58349a41"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/translations.js?v=efdbd0b9"></script>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="M3C6 (Python y bases de datos)" href="../m3c6/m3c6_index.html" />
+    <link rel="prev" title="Comprensión de listas" href="m3c5_list_comprehension.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="funciones">
+<h1>Funciones<a class="headerlink" href="#funciones" title="Link to this heading">¶</a></h1>
+<p>En este apartado debo explicar lo que son los argumentos y la función <em>lambda</em>, pero eso no se puede hacer sin decir que es una función.</p>
+<section id="funcion-con-def-y-argumentos">
+<h2>Función con def() y argumentos<a class="headerlink" href="#funcion-con-def-y-argumentos" title="Link to this heading">¶</a></h2>
+<p>Una función es un proceso que es capaz de coger un input (o no) y hacer algo con ello, normalmente transformándolo en un output. Es como un cajón mágico
+en el que metes un pañuelo y te sale una paloma. ¡Contruyamos ese cajón mágico!</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">magic_box</span><span class="p">(</span><span class="n">objeto</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">objeto</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;pañuelo&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;paloma&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">objeto</span><span class="p">)</span>
+
+<span class="n">magic_box</span><span class="p">(</span><span class="s2">&quot;pañuelo&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">paloma</span>
+</pre></div>
+</div>
+<p>Hemos definido una función llamada «magic_box» y le hemos pasado un valor (objeto). Si ese valor es un pañuelo, lo transforma en paloma, si no, nos devuelve el objeto.
+Cuando llamamos por su nombre y ejecutamos la función, le metemos el valor del objeto. Ese valor es el argumento de la función. En este sencillo caso, sólo pasamos
+un valor (un argumento), pero podrían pasarse más. Si tenemos muchos argumentos, podemos usar args y desempaquetar varios valores a la vez (en orden) o kwargs que es lo mismo,
+pero llamando a cada elemento de los argumentos por una palabra clave (<em>keyword</em> del inglés). El ejemplo de la caja mágica con múltiples objetos sería:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">magic_box</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+    <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">arg</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;pañuelo&quot;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;paloma&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+
+<span class="n">magic_box</span><span class="p">(</span><span class="s2">&quot;bola&quot;</span><span class="p">,</span> <span class="s2">&quot;llavero&quot;</span><span class="p">,</span> <span class="s2">&quot;pañuelo&quot;</span><span class="p">,</span> <span class="s2">&quot;mechero&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">bola</span>
+<span class="go">llavero</span>
+<span class="go">paloma</span>
+<span class="go">mechero</span>
+</pre></div>
+</div>
+<p>Todo buen mago que se precie elige a una persona del público para ayudarle con el truco y siempre le hace alguna pregunta. En este caso, le pregunta el nombre, la edad y si
+le gustan o no las palomas (esperemos que sí, no queremos ningún disgusto). Esas respuestas se las apunta como <em>keywords</em> para poder hablar sobre su ayudante.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">magic_box</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saludemos a </span><span class="si">{</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;nombre&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> que tiene </span><span class="si">{</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> años y </span><span class="si">{</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;palomas&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> le gustan las palomas&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">arg</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;pañuelo&quot;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;paloma&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+
+<span class="n">magic_box</span><span class="p">(</span><span class="s2">&quot;bola&quot;</span><span class="p">,</span> <span class="s2">&quot;llavero&quot;</span><span class="p">,</span> <span class="s2">&quot;pañuelo&quot;</span><span class="p">,</span> <span class="s2">&quot;mechero&quot;</span><span class="p">,</span>
+        <span class="n">nombre</span> <span class="o">=</span> <span class="s2">&quot;Sara&quot;</span><span class="p">,</span> <span class="n">edad</span><span class="o">=</span> <span class="mi">13</span><span class="p">,</span> <span class="n">palomas</span> <span class="o">=</span> <span class="s2">&quot;sí&quot;</span> <span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Saludemos a Sara que tiene 13 años y sí le gustan las palomas</span>
+<span class="go">bola</span>
+<span class="go">llavero</span>
+<span class="go">paloma</span>
+<span class="go">mechero</span>
+</pre></div>
+</div>
+</section>
+<section id="funcion-lambda">
+<h2>Función lambda<a class="headerlink" href="#funcion-lambda" title="Link to this heading">¶</a></h2>
+<p>La función <em>lambda</em> es una función anónima, no tiene nombre. Al no tener nombre no podemos llamarla varias veces en diferentes puntos del código, como sí que se puede
+hacer con las funciones con nombre (creadas con «def»). Sin embargo, podemos guardarla en una variable y entonces sí que podemos usarla donde nos plaza. La función lambda es recomendable
+sólo con funciones sencillas. Volviendo a la caja mágica, si en lugar de una caja, tenemos al mago haciendo el truco sobre la marcha
+de manera rápida, pero eficiente, podríamos usar una función <em>lambda</em>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mago</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">objeto</span><span class="p">:</span> <span class="s2">&quot;paloma&quot;</span> <span class="k">if</span> <span class="n">objeto</span> <span class="o">==</span> <span class="s2">&quot;pañuelo&quot;</span> <span class="k">else</span> <span class="n">objeto</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">mago</span><span class="p">(</span><span class="s2">&quot;pañuelo&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">paloma</span>
+</pre></div>
+</div>
+<p>Como podéis ver le damos un objeto (argumento) al mago y «al vuelo» lo transforma (ejecuta lo que viene después de «:») en paloma, si es un pañuelo. Espero que con este apartado haya quedado
+clara la magia de las funciones de Python.</p>
+</section>
+<section id="pip-y-los-paquetes-de-python">
+<h2><em>pip</em> y los paquetes de Python<a class="headerlink" href="#pip-y-los-paquetes-de-python" title="Link to this heading">¶</a></h2>
+<p>A pesar de que el título de este apartado parece el de una comedia navideña, es muy importante. De hecho, ¿que me diríais si os comentara que muchas de las funciones
+en las que penséis, y muchas más, ya existen y están accesibles gracias a programadores muy simpáticos? Me preguntaríais cómo conseguirlas. Es muy sencillo, la gente crea
+bibliotecas que agrupan módulos que tienen funciones en su interior. Como esas funciones tienen nombres, y sus módulos y bibliotecas también, sólo hace falta llamarlas.
+El problema está en que esas bibliotecas se distribuyen en paquetes que tenemos que instalar. Para eso tenemos a <strong>pip</strong>, el instalador de paquetes de Python, sería una especie de asistente, ayudándonos
+en el proceso.</p>
+<p>Si se está usando Python 3, lo más normal es tener instalado <strong>pip</strong>, si no, lo instalamos siguiendo estas instrucciones: <a class="reference external" href="https://pip.pypa.io/en/stable/installation/">https://pip.pypa.io/en/stable/installation/</a>.</p>
+<p>Para usarlo, escribimos el siguiente código en la terminal de comandos de nuestro sistema operativo:</p>
+<div class="highlight-command notranslate"><div class="highlight"><pre><span></span>$ pip install paquete_que_queramos
+</pre></div>
+</div>
+<p>Para actualizar paquetes:</p>
+<div class="highlight-command notranslate"><div class="highlight"><pre><span></span>$ pip install --upgrade paquete_que_queramos
+</pre></div>
+</div>
+<p>Y para desinstalar:</p>
+<div class="highlight-command notranslate"><div class="highlight"><pre><span></span>$ pip uninstall paquete_que_no_queramos
+</pre></div>
+</div>
+<p>De esta manera, tendremos acceso a un mundo de posibilidades.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Curso Full Stack</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navegación</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="m3c5_index.html">M3C5 (Python)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="m3c5_conditionals.html">Condicionales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m3c5_bucles.html">Bucles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m3c5_list_comprehension.html">Comprensión de listas</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Funciones</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../m3c6/m3c6_index.html">M3C6 (Python y bases de datos)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m4c7/m4c7_index.html">M4C7 (Javascript)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m4c8/m4c8_index.html">M4C8 (Javascript)</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="m3c5_index.html">M3C5 (Python)</a><ul>
+      <li>Previous: <a href="m3c5_list_comprehension.html" title="capítulo anterior">Comprensión de listas</a></li>
+      <li>Next: <a href="../m3c6/m3c6_index.html" title="próximo capítulo">M3C6 (Python y bases de datos)</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Endika de la Iglesia.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="../../_sources/rst_files/m3c5/m3c5_functions.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

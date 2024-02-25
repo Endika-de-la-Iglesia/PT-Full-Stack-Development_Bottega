@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+
+<html lang="es" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Javascript, conceptos básicos &#8212; documentación de Curso Full Stack - 0.0.2</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=58349a41"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/translations.js?v=efdbd0b9"></script>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="prev" title="M4C8 (Javascript)" href="m4c8_index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="javascript-conceptos-basicos">
+<h1>Javascript, conceptos básicos<a class="headerlink" href="#javascript-conceptos-basicos" title="Link to this heading">¶</a></h1>
+<p>Javascript (JS) es un lenguaje de programación orientado a objetos (siglas OOP en inglés); al igual que ocurre con Python,
+se basa en el uso y tratamiento de elementos denominados objetos. En JS casi todo puede ser considerado un
+objeto excepto unos casos concretos de tipos de dato «primitivos», que veremos en más detalle en el siguiente apartado.</p>
+<p>Lo importante, por ahora, es saber qué hace especial a JS frente a otros tipos de lenguaje de programación. La característica diferenciadora
+es que JS puede ser interpretado y ejecutado directamente por los navegadores de internet. Todos los demás lenguajes necesitan un
+marco de trabajo concreto y ser procesados, compilados o interpretados por otro <em>software</em> para que puedan ser entendidos por
+los navegadores. Esto hace que JS sea el lenguaje nativo de los navegadores a la hora de querer ejecutar código sin necesidad de que
+este sea «traducido» en un servidor u ordenador.</p>
+<p>Aparte de poder ser usado como un OOP, JS también se puede considerar un lenguaje orientado a eventos, lo que significa que puede responder
+a sucesos tales como pinchar con el ratón o cambios dinámicos en la página web en la que estemos. Además, JS tiene una naturaleza asíncrona, básica
+en el entorno de un navegador, permitiendo realizar operaciones sin bloquear la ejecución del código. Esto significa que si, por ejemplo,
+tenemos un escuchador de eventos esperando a notar que el ratón pincha un botón, el resto del código puede ejecutarse aunque no se haya pinchado.
+También podría ocurrir que tuviéramos un código tan lento ejecutándose que no querríamos que el resto de funcionalidades no funcionaran hasta
+que el primer código acabara de ejecutarse.</p>
+<p>Asimismo, JS destaca por sus estándares abiertos, contribuyendo a su portabilidad y compatibilidad entre diferentes navegadores. La citada estandarización
+se basa en la especificación ECMAScript, implementada en la mayoría de navegadores existentes. De igual manera, existe un amplio ecosistema de bibliotecas y
+<em>frameworks</em> que contribuyen al desarrollo adecuado y robusto de aplicaciones en este lenguaje.</p>
+<section id="tipos-de-datos-en-javascript">
+<h2>Tipos de datos en Javascript<a class="headerlink" href="#tipos-de-datos-en-javascript" title="Link to this heading">¶</a></h2>
+<p>Como se ha mencionado antes, existen varios tipos de datos, los primitivos, que no son objetos <em>per se</em>, y los objetos.</p>
+<p>Dentro de los tipos primitivos se incluyen las cadenas de texto (<em>string</em>), los números, los booleanos (verdadero o falso), los nulos (carentes de valor, ausencia
+intencional de ese valor asignado), los indefinidos (sólo se declara la variable, pero no se le asigna un valor) y símbolo (devuelve un identificador o símbolo único para
+una variable o propiedad de un objeto). Veamos un ejemplo de cada tipo:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">cadena</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Esto es un string&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">numero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">23</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">ejemploBooleano</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">nulo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">indefinido</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">simbolo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Symbol</span><span class="p">(</span><span class="s2">&quot;Esto es una descripción del símbolo&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>En todos los casos hemos puesto <code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">nombreVariable</span></code> para declarar la variable y <code class="docutils literal notranslate"><span class="pre">=</span> <span class="pre">valor</span></code> para asignarle un valor. JS
+es inteligente y sabe el tipo de dato que hemos guardado en la variable. Los dos tipos de datos más raros son el indefinido,
+ya que lo hemos declarado pero no le hemos pasado valor alguno, y símbolo, que hemos usado una función para transformar
+lo que sería una cadena en un mensaje descriptivo de un identificador único.</p>
+<p>Nos queda por poner un ejemplo del tipo objeto, cuya estructura se basa en pares de llave-valor, donde cada llave es una propiedad del objeto
+y el valor que guarda. Así tenemos que:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">ejemploObjeto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="nx">llaveUno</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;valor 1&quot;</span><span class="p">,</span>
+<span class="nx">llaveDos</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;valor 2&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Por último nos quedarían los vectores o <em>arrays</em>, que son colecciones de otros tipos de datos.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">ejemploArray</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nx">cadena</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">numero</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">ejemploBooleano</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">nulo</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">indefinido</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">simbolo</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">ejemploObjeto</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Hemos creado un <em>array</em> usando <code class="docutils literal notranslate"><span class="pre">[]</span></code> y hemos añadido todas las demás variables como elementos de
+ese <em>array</em>.</p>
+<p>Si quisieramos confirmar el tipo de dato de cada variable, y ver que todo está bien hecho, podríamos
+usar el operador <code class="docutils literal notranslate"><span class="pre">typeof</span> <span class="pre">nuestraVariable</span></code> para verlo. Nota: a partir de ahora veréis que uso de manera
+repetida <code class="docutils literal notranslate"><span class="pre">console.log()</span></code> para imprimir resultados en la consola.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">cadena</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">numero</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">ejemploBooleano</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">nulo</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">indefinido</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">simbolo</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">ejemploObjeto</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">ejemploArray</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">string</span>
+<span class="go">number</span>
+<span class="go">boolean</span>
+<span class="go">object</span>
+<span class="go">undefined</span>
+<span class="go">symbol</span>
+<span class="go">object</span>
+<span class="go">object</span>
+</pre></div>
+</div>
+<p>Todo parece estar bien, excepto el tipo nulo, que por razones históricas e imperfección del operador
+typeof nos dice que es un objeto cuando en realidad no lo es, y <em>array</em>, que es un tipo de objeto (colección).</p>
+</section>
+<section id="datos-de-tipo-cadena">
+<h2>Datos de tipo cadena<a class="headerlink" href="#datos-de-tipo-cadena" title="Link to this heading">¶</a></h2>
+<p>Los datos de tipo cadena aceptan una serie de funciones (métodos), códigos que ante un valor de entrada dan otro de salida,
+que permiten realizar diferentes acciones interesantes. Creemos nuestra cadena y veamos las diferentes funciones:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">ejemplo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Este es mi string the ejemplo&quot;</span>
+</pre></div>
+</div>
+<p>Algunos ejemplos útiles  de funciones son:</p>
+<p>Determinar el tamaño de la cadena, aunque esto es un atributo de esta clase de datos en JS, en otros lenguajes es una función.
+Nótese la ausencia de <code class="docutils literal notranslate"><span class="pre">()</span></code> detrás del nombre al no ser una función como tal.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ejemplo</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">29</span>
+</pre></div>
+</div>
+<p>Determinar la letra o carácter que se halla en la posición, o índice, que le proporcionamos.
+Recordad que JS es un lenguaje con índices comenzando en 0.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ejemplo</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mf">0</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">E</span>
+</pre></div>
+</div>
+<p>Añadir a una cadena otra cadena, es decir, concatenarlas. Es importante ver que esta función no cambia la cadena
+original y mi variable ejemplo sigue teniendo el valor original. Si quisieramos guardar la nueva versión, tendríamos que hacerlo dentro
+de una variable.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ejemplo</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="s2">&quot; y le añado esto&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Este es mi string the ejemplo y le añado esto</span>
+</pre></div>
+</div>
+<p>De hecho, mirad que pasa si le pedimos que nos diga con la funcióin <code class="docutils literal notranslate"><span class="pre">includes()</span></code> si lo que hemos concatenado está
+ahí.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ejemplo</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s2">&quot; y le añado esto&quot;</span><span class="p">))</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ejemplo</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">false</span>
+<span class="go">Este es mi string the ejemplo</span>
+</pre></div>
+</div>
+<p>Nos devuelve <code class="docutils literal notranslate"><span class="pre">false</span></code> porque ejemplo no contiene «y le añado esto», tal y como vemos al imprimir
+el valor de ejemplo.</p>
+<p>Hay muchos más métodos aplicables a los datos de tipo cadena, podéis consultar todos ellos, con ejemplos,
+<a class="reference external" href="https://www.w3schools.com/js/js_string_methods.asp">en este enlace</a>.</p>
+</section>
+<section id="condicionales">
+<h2>Condicionales<a class="headerlink" href="#condicionales" title="Link to this heading">¶</a></h2>
+<p>Las bases y los fundamentos de los condicionales están explicados en esta guía para <a class="reference internal" href="../m3c5/m3c5_conditionals.html"><span class="doc">Python</span></a>. En JS el
+funcionamiento es muy parecido, sólo cambia la sintaxis para lograr generar los condicionales. Recurriendo al mismo ejemplo
+del casino online que usé en Python, si quisieramos filtrar el acceso de un usuario en base a su edad, podríamos
+establecer un condicional que determinara si la edad de esa persona es igual o superior a 18 años.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">edad</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">18</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Acceso denegado&quot;</span><span class="p">)</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Acceso permitido&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Acceso permitido</span>
+</pre></div>
+</div>
+<p>Aquí se puede apreciar la sintaxis específica de JS para un condicional <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(condición)</span> <span class="pre">{hacemos</span> <span class="pre">algo}</span></code>
+y la alternativa si no se cumple la condición <code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">{si</span> <span class="pre">no,</span> <span class="pre">ocurre</span> <span class="pre">esto</span> <span class="pre">otro}</span></code>. Las condiciones no tienen por qué
+ser binarias, podemos poner condiciones múltiples mediante el uso de <code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">if</span> <span class="pre">(otra</span> <span class="pre">condición)</span> <span class="pre">{hacemos</span> <span class="pre">esto}</span></code>.
+En el caso del casino, tal y como indiqué en la guía de Python, podría darse el caso de tener vetada la entrada a ciertas personas cuyos nombres
+están en una lista (<em>array</em> en JS).</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">listaNombres</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Manuel&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Paco&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Sara&quot;</span><span class="p">];</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Sara&quot;</span><span class="p">;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">edad</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">18</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Acceso denegado&quot;</span><span class="p">)</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">listaNombres</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">nombre</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Acceso denegado&quot;</span><span class="p">)</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Acceso permitido&quot;</span><span class="p">)</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Acceso denegado</span>
+</pre></div>
+</div>
+<p>Aquí el nombre ha sido capturado por el <code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">if</span></code> al estar incluido en la lista de nombres.</p>
+</section>
+<section id="operador-ternario">
+<h2>Operador ternario<a class="headerlink" href="#operador-ternario" title="Link to this heading">¶</a></h2>
+<p>Un operador ternario es una manera adicional de representar las elecciones de un condicional usando una sintaxis más concisa. Sin embargo,
+puede llegar a ser más confuso en aquellos casos que no sean simples. La sintaxis es tal que así:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">condicion</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">expresion_si_es_verdad</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">expresion_si_es_falso</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Veamos la manera de escribir un operador ternario para nuestro caso de la detección de edad en un casino online.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span>
+
+<span class="nx">edad</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">18</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Acceso denegado&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Acceso permitido&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Acceso permitido</span>
+</pre></div>
+</div>
+<p>Podríamos complicarlo un poco más, aunque no es nada recomendable, puede llevar a confusión. De hecho, en otros lenguajes, como Python, sólo está permitido usar
+expresiones ternarias con situaciones de elección binaria, para evitar un uso incorrecto de estos operadores.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">condicion_uno</span>
+<span class="w">    </span><span class="o">?</span><span class="w"> </span><span class="nx">condicion_dos</span>
+<span class="w">        </span><span class="o">?</span><span class="w"> </span><span class="nx">expresion_si_es_verdad_condicion_dos</span>
+<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="nx">si_es_falso_condicion_dos</span>
+<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="nx">expresion_si_condicion_uno_falso</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Sería lo mismo que esto:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">condicion_uno</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">condicion_dos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">expresion_si_es_verdad_condicion_dos</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">si_es_falso_condicion_dos</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">expresion_si_condicion_uno_falso</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Para el ejemplo del casino tendríamos:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">listaNombres</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Manuel&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Paco&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Sara&quot;</span><span class="p">];</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Sara&quot;</span><span class="p">;</span>
+
+<span class="nx">edad</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">18</span>
+<span class="o">?</span><span class="w"> </span><span class="nx">listaNombres</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span>
+<span class="w">    </span><span class="o">?</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Acceso denegado&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Acceso permitido&quot;</span><span class="p">)</span>
+<span class="o">:</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Acceso denegado&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Acceso denegado</span>
+</pre></div>
+</div>
+<p>Comprobamos primero que la edad sea superior o igual a 18 años. Después, miramos si su nombre está en la lista
+de prohibición, en caso de estarlo se le denegará el acceso. Si la edad fuera menor de 18 años, saltaríamos
+a la expresión activada si el primer condicional es falso.
+Repito que esto no es recomendable, siempre es mejor que se entienda bien el funcionamiento del código;
+debe primar la legibilidad al ahorro de líneas de código.</p>
+</section>
+<section id="funciones">
+<h2>Funciones<a class="headerlink" href="#funciones" title="Link to this heading">¶</a></h2>
+<p>Las funciones son instrucciones que permiten transformar un <em>input</em> en un <em>output</em>. La lógica detrás de
+la creación de funciones está explicada en detalle en mi guía de <a class="reference internal" href="../m3c5/m3c5_functions.html"><span class="doc">Python</span></a>. Aquí se explicará la sintaxis
+específica de JS. Usaré el mismo caso de la caja mágica en la que meter un pañuelo lo transforma en una paloma
+y cualquier otra cosa se queda igual.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">cosaUno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pañuelo&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">cosaDos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;otra cosa&quot;</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">cajaMagica</span><span class="w"> </span><span class="p">(</span><span class="nx">cosa</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">cosa</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;pañuelo&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;paloma&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">cosa</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">())</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">cajaMagica</span><span class="p">(</span><span class="nx">cosaUno</span><span class="p">);</span>
+<span class="nx">cajaMagica</span><span class="p">(</span><span class="nx">cosaDos</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">paloma</span>
+<span class="go">otra cosa</span>
+</pre></div>
+</div>
+<p>En este caso hemos declarado una función, poníendole un nombre <code class="docutils literal notranslate"><span class="pre">cajaMagica</span></code>, y hemos insertado dentro un condicional para que analice el texto dentro
+del argumento <code class="docutils literal notranslate"><span class="pre">cosa</span></code>.</p>
+<p>Existe otra manera de crear una función, generar una expresión de función anónima sin declaración de su nombre. Para lograr esto, debemos
+guardar la función anónima dentro de una variable (la haremos constante, declarándola con <code class="docutils literal notranslate"><span class="pre">const</span></code>, para que no se pueda modificar), que sí que tendrá nombre.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">cosaUno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pañuelo&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">cosaDos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;otra cosa&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">cajaMagica</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">cosa</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">cosa</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;pañuelo&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;paloma&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">cosa</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">())</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">cajaMagica</span><span class="p">(</span><span class="nx">cosaUno</span><span class="p">);</span>
+<span class="nx">cajaMagica</span><span class="p">(</span><span class="nx">cosaDos</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">paloma</span>
+<span class="go">otra cosa</span>
+</pre></div>
+</div>
+<p>Como veis es lo mismo, simplemente con la declaración tenemos una función con nombre y en la expresión de función tenemos una variable con una función dentro.
+El que usemos un tipo u otro dependerá del ámbito en el que queramos usar la función, el cómo queramos usarla (es más fácil pasar una función como argumento
+de otra si está guardada en una variable), de cuestiones estilísticas, y del <em>hoisting</em> de la declaración (con una declaración de función, la
+función se puede usar antes de declararla, mientras que con las expresiones de función no).</p>
+</section>
+<section id="la-palabra-clave-this">
+<h2>La palabra clave <em>this</em><a class="headerlink" href="#la-palabra-clave-this" title="Link to this heading">¶</a></h2>
+<p>La palabra <em>this</em> se utiliza en JS para hacer referencia a una instancia en concreto dentro de un entorno, objeto o función en la que se encuentre un elemento que
+queremos usar. Hay muchas situaciones en las que puede ser necesario referirse al propio ámbito de un elemento en JS. A continuación
+expongo dos ejemplos de su utilidad:</p>
+<p>Tenemos que hacer que al pinchar en un boton de una página web este se desactive, para no poder pulsarlo muchas
+veces seguidas y saturar el sistema u obtener respuestas inesperadas:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">miBoton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;miBoton&quot;</span><span class="p">);</span>
+
+<span class="nx">miBoton</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">disabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Tenemos un objeto con un nombre como propiedad y queremos poder mostrar ese nombre con una función declarada
+dentro del objeto:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">persona</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Endika&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">mostrarNombre</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">nombre</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">persona</span><span class="p">.</span><span class="nx">mostrarNombre</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Aquí el <em>this</em> nos señala a la propiedad interna del objeto llamada nombre.</p>
+</section>
+<section id="ejercicio-propuesto">
+<h2>Ejercicio propuesto<a class="headerlink" href="#ejercicio-propuesto" title="Link to this heading">¶</a></h2>
+<p>Con todos los conocimientos adquiridos, podemos intentar resolver el ejercicio que nos han mandado. Dice así: «Cree una función JS que incluya
+4 argumentos. Suma los dos primeros argumentos, luego los dos segundos y multiplícalos.
+Si el número creado es mayor que 50, registre la consola «¡El número es mayor que 50!».
+Si es más pequeño, registre la consola «¡El número es inferior a 50!»»</p>
+<p>Vamos a desgranar paso a paso lo que vamos a hacer para lograr crear la función que nos solicitan. Primero vamos a declarar la función y pasarle cuatro
+argumentos.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">numOne</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">numTwo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">numThree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">4</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">numFour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">mathOperation</span><span class="w"> </span><span class="p">(</span><span class="nx">numOne</span><span class="p">,</span><span class="w"> </span><span class="nx">numTwo</span><span class="p">,</span><span class="w"> </span><span class="nx">numThree</span><span class="p">,</span><span class="w"> </span><span class="nx">numFour</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numOne</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numTwo</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numThree</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numFour</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">mathOperation</span><span class="p">(</span><span class="nx">numOne</span><span class="p">,</span><span class="w"> </span><span class="nx">numTwo</span><span class="p">,</span><span class="w"> </span><span class="nx">numThree</span><span class="p">,</span><span class="w"> </span><span class="nx">numFour</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">2</span>
+<span class="go">3</span>
+<span class="go">4</span>
+<span class="go">5</span>
+</pre></div>
+</div>
+<p>Hemos imprimido los cuatro números, pero podríamos haber confirmado que fueran números de la siguiente manera:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">numOne</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">numTwo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">numThree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">4</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">numFour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">mathOperation</span><span class="w"> </span><span class="p">(</span><span class="nx">numOne</span><span class="p">,</span><span class="w"> </span><span class="nx">numTwo</span><span class="p">,</span><span class="w"> </span><span class="nx">numThree</span><span class="p">,</span><span class="w"> </span><span class="nx">numFour</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">checkNumbers</span><span class="p">(</span><span class="nx">numOne</span><span class="p">,</span><span class="w"> </span><span class="nx">numTwo</span><span class="p">,</span><span class="w"> </span><span class="nx">numThree</span><span class="p">,</span><span class="w"> </span><span class="nx">numFour</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">numOne</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;number&quot;</span>
+<span class="w">            </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">numTwo</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;number&quot;</span>
+<span class="w">            </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">numThree</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;number&quot;</span>
+<span class="w">            </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">numFour</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;number&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">checkNumbers</span><span class="w"> </span><span class="p">(</span><span class="nx">numOne</span><span class="p">,</span><span class="w"> </span><span class="nx">numTwo</span><span class="p">,</span><span class="w"> </span><span class="nx">numThree</span><span class="p">,</span><span class="w"> </span><span class="nx">numFour</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Son números&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;No son números&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">mathOperation</span><span class="p">(</span><span class="nx">numOne</span><span class="p">,</span><span class="w"> </span><span class="nx">numTwo</span><span class="p">,</span><span class="w"> </span><span class="nx">numThree</span><span class="p">,</span><span class="w"> </span><span class="nx">numFour</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Son números</span>
+</pre></div>
+</div>
+<p>Hemos creados una función dentro de <code class="docutils literal notranslate"><span class="pre">mathOperation</span></code>, llamada <code class="docutils literal notranslate"><span class="pre">checkNumbers</span></code>, para devolver un booleano true si los cuatro argumentos son
+números. Debajo hemos puesto un condicional que imprime <code class="docutils literal notranslate"><span class="pre">Son</span> <span class="pre">números</span></code> si checkNumbers devuelve verdadero, si no, alguno no es un número.
+Ahora nos quedaría, dentro de la condición de que todos sean números, hacer el cálculo pedido.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">numOne</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">numTwo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">numThree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">4</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">numFour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">mathOperation</span><span class="w"> </span><span class="p">(</span><span class="nx">numOne</span><span class="p">,</span><span class="w"> </span><span class="nx">numTwo</span><span class="p">,</span><span class="w"> </span><span class="nx">numThree</span><span class="p">,</span><span class="w"> </span><span class="nx">numFour</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">checkNumbers</span><span class="p">(</span><span class="nx">numOne</span><span class="p">,</span><span class="w"> </span><span class="nx">numTwo</span><span class="p">,</span><span class="w"> </span><span class="nx">numThree</span><span class="p">,</span><span class="w"> </span><span class="nx">numFour</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">numOne</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;number&quot;</span>
+<span class="w">            </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">numTwo</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;number&quot;</span>
+<span class="w">            </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">numThree</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;number&quot;</span>
+<span class="w">            </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">numFour</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;number&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">checkNumbers</span><span class="w"> </span><span class="p">(</span><span class="nx">numOne</span><span class="p">,</span><span class="w"> </span><span class="nx">numTwo</span><span class="p">,</span><span class="w"> </span><span class="nx">numThree</span><span class="p">,</span><span class="w"> </span><span class="nx">numFour</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">numOne</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">numTwo</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nx">numThree</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">numFour</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Confirma que todos son números&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">mathOperation</span><span class="p">(</span><span class="nx">numOne</span><span class="p">,</span><span class="w"> </span><span class="nx">numTwo</span><span class="p">,</span><span class="w"> </span><span class="nx">numThree</span><span class="p">,</span><span class="w"> </span><span class="nx">numFour</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">45</span>
+</pre></div>
+</div>
+<p>Pero no nos han mandado imprimir el número, nos han pedido que miremos con un condicional si el resultado es superior o inferior a 50,
+creo que convendría añadir otra condición si el valor es 50 (para evitar que else incluya a 50, o podríamos poner un <code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">if</span></code>).</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">numOne</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">numTwo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">numThree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">4</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">numFour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">mathOperation</span><span class="w"> </span><span class="p">(</span><span class="nx">numOne</span><span class="p">,</span><span class="w"> </span><span class="nx">numTwo</span><span class="p">,</span><span class="w"> </span><span class="nx">numThree</span><span class="p">,</span><span class="w"> </span><span class="nx">numFour</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">checkNumbers</span><span class="p">(</span><span class="nx">numOne</span><span class="p">,</span><span class="w"> </span><span class="nx">numTwo</span><span class="p">,</span><span class="w"> </span><span class="nx">numThree</span><span class="p">,</span><span class="w"> </span><span class="nx">numFour</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">numOne</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;number&quot;</span>
+<span class="w">            </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">numTwo</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;number&quot;</span>
+<span class="w">            </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">numThree</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;number&quot;</span>
+<span class="w">            </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">numFour</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;number&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">checkNumbers</span><span class="w"> </span><span class="p">(</span><span class="nx">numOne</span><span class="p">,</span><span class="w"> </span><span class="nx">numTwo</span><span class="p">,</span><span class="w"> </span><span class="nx">numThree</span><span class="p">,</span><span class="w"> </span><span class="nx">numFour</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">numOne</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">numTwo</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nx">numThree</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">numFour</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">50</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;¡El número es mayor que 50!&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">50</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;¡El número es 50!&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;¡El número es inferior a 50!&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Confirma que todos son números&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">mathOperation</span><span class="p">(</span><span class="nx">numOne</span><span class="p">,</span><span class="w"> </span><span class="nx">numTwo</span><span class="p">,</span><span class="w"> </span><span class="nx">numThree</span><span class="p">,</span><span class="w"> </span><span class="nx">numFour</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">¡El número es inferior a 50!</span>
+</pre></div>
+</div>
+<p>¡Listo!
+Si alguno de los argumentos no fuera un número,
+la consola nos indicaría que confirmáramos que todos fueran números.</p>
+<p>Dado que una imagen vale más que mil palabras, aquí dejo un diagrama explicando nuestra función.</p>
+<img alt="Diagrama de flujo de la función" src="../../_images/m4c7_exercise.png" />
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Curso Full Stack</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navegación</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../m3c5/m3c5_index.html">M3C5 (Python)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m3c6/m3c6_index.html">M3C6 (Python y bases de datos)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m4c7/m4c7_index.html">M4C7 (Javascript)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="m4c8_index.html">M4C8 (Javascript)</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Javascript, conceptos básicos</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="m4c8_index.html">M4C8 (Javascript)</a><ul>
+      <li>Previous: <a href="m4c8_index.html" title="capítulo anterior">M4C8 (Javascript)</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Endika de la Iglesia.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="../../_sources/rst_files/m4c8/m4c8_javascript.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

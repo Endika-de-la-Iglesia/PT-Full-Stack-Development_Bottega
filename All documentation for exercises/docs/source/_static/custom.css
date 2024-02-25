@@ -1,0 +1,196 @@
+html {
+    height: 100%;
+    /* font-family: Liberation Sans, DejaVu Sans, sans serif, sans; */
+}
+
+body {
+    height: 90%;
+}
+
+div.body {
+    font-size: 100%;
+    max-width: fit-content;
+}
+
+div.document {
+    height: 100%;
+    width: 90%;
+    margin: 30px auto 0px auto;
+    overflow-y: auto;
+}
+
+div.documentwrapper {
+    height: 100%;
+    overflow-y: auto;
+    position: initial;
+}
+
+div.sphinxsidebar {
+    height: 100%;
+    overflow-y: auto;
+    position: initial;
+    font-size: 85%;
+}
+
+div.footer {
+    margin: 15px auto 20px auto;
+    width: auto;
+    text-align: center;
+}
+
+/* Media query */
+@media (max-height: 650px) {
+    html {
+        height: 650px;
+    }
+}
+
+@media (min-width: 1600px) {
+    html {
+        width: 1600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 875px) {
+
+    body {
+        display: flex;
+        flex-direction: column;
+        padding: 0px 20px 0px 20px;
+        height: auto;
+    }
+
+    div.document {
+        display: flex;
+        flex-direction: column;
+        overflow-y: visible;
+    }
+
+    div.documentwrapper {
+        overflow-y: visible;
+        order: 2;
+    }
+
+    div.sphinxsidebar {
+        background: white;
+        overflow-y: visible;
+        order: 1;
+        margin: auto auto 30px auto;
+    }
+
+    div.sphinxsidebar a, 
+    div.sphinxsidebar h3,
+    div.sphinxsidebarwrapper h1.logo, 
+    div.sphinxsidebarwrapper li,
+    div.sphinxsidebarwrapper a {
+        color: black;
+    }
+
+    div.sphinxsidebarwrapper {
+        display: flex;
+        flex-direction: column;
+        align-items:  center;
+    }
+
+    div.footer {
+        display: block;
+        width: 100%;
+        margin: 10px auto 20px auto;
+    }
+}
+
+
+
+/* remove bullet markers in TOC */
+/* div.sphinxsidebar ul li.toctree-l1 {
+    list-style-type: none;
+}
+
+div.sphinxsidebar ul li.toctree-l2 {
+    list-style-type: none;
+}
+
+div.sphinxsidebar ul li.toctree-l3 {
+    list-style-type: none;
+}
+
+div.sphinxsidebar h3
+{
+    text-indent: 0;
+    font-size: 105%;
+    margin-left: 1em;
+} */
+
+/* sidebar caption font */
+/* div.sphinxsidebar p.caption {
+    font-weight: bold;
+    font-size: 130%;
+} */
+
+/* notes and warnings */
+
+/* div.note {
+    margin-left: 4em;
+    margin-right: 4em;
+    background-color: #F5F5F5;
+}
+
+div.admonition p.admonition-title {
+    font-size: 100%;
+    font-weight: bold;
+}
+
+div.admonition p.last {
+    font-size: 100%;
+}
+
+div.warning {
+    background-color: #FFEDED;
+} */
+
+/* pre background will be lighter; no italics */
+/* pre, tt, code {
+    background-color: #F5F5F5;
+    font-size: 95%;
+    font-family: Liberation Mono, DejaVu San Mono, Monospace, fixed;
+}
+
+.highlight .c1 {
+    font-style: normal;
+} */
+
+/* body headers */
+
+/* div.body h1, div.body h2, div.body h3 {
+    font-family: Liberation Sans, DejaVu Sans, sans serif, sans;
+    font-weight: bold;
+}
+
+div.body h1 {
+    text-indent: -1em;
+    font-size: 170%;
+    margin-top: 2em;
+}
+
+div.body h2 {
+    text-indent: -1em;
+    font-size: 150%;
+}
+
+div.body h3 {
+    font-size: 130%;
+}
+
+div.body h4 {
+    font-size: 115%;
+    font-family: Liberation Serif, DejaVu Serif, serif, sans;
+    font-weight: bold;
+} */
+
+/* tables */
+
+/* table.docutils td, table.docutils th {
+    border-color: #E5E5E5;	
+} */
