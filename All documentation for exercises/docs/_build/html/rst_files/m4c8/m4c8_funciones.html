@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html lang="es" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Funciones y variables &#8212; documentación de Curso Full Stack - 0.0.2</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=58349a41"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/translations.js?v=efdbd0b9"></script>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="Promesas y asincronía" href="m4c8_promesa.html" />
+    <link rel="prev" title="Bucles" href="m4c8_bucles.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="funciones-y-variables">
+<h1>Funciones y variables<a class="headerlink" href="#funciones-y-variables" title="Link to this heading">¶</a></h1>
+<p>La diferencia entre declarar una función y crear una expresión de función, con función anónima, ya se explicó en <a class="reference internal" href="../m4c7/m4c7_javascript.html#javascript-funciones"><span class="std std-ref">Funciones</span></a>.
+En esta ocasión vamos a ver una tercera manera de crear una función y nombrarla.</p>
+<section id="las-funciones-de-flecha">
+<h2>Las funciones de flecha<a class="headerlink" href="#las-funciones-de-flecha" title="Link to this heading">¶</a></h2>
+<p>¿Qué demonios quiere decir que una función sea de flecha? Pues literalmente eso, que tiene una «flecha» para indicar el argumento o argumentos (o su ausencia con <code class="docutils literal notranslate"><span class="pre">()</span></code>) que
+se le pasan a una función. Este tipo de función es una variante de las expresiones de función, cambia la manera de escribirlo, y algunas implicaciones
+adicionales. Veamos una expresión que no usa argumentos para llevar a cabo un efecto. Dado que nos han mandado como ejercicio escribir una función
+que nos devuelva <code class="docutils literal notranslate"><span class="pre">Hello</span> <span class="pre">World</span></code>, vamos a hacer eso.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">saludoUno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;Hello World, clásico&quot;</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">saludoUno</span><span class="p">());</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Hello World, clásico</span>
+</pre></div>
+</div>
+<p>Al invocar <code class="docutils literal notranslate"><span class="pre">saludoUno()</span></code>, se devuelve un mensaje. Esto mismo con funciones de flecha es muy sencillo. Se quita <code class="docutils literal notranslate"><span class="pre">function</span></code>
+y se indica que es una función poniendo <code class="docutils literal notranslate"><span class="pre">(argumentos)</span> <span class="pre">=&gt;</span> <span class="pre">{efecto</span> <span class="pre">función}</span></code>.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">saludoDos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;Hello World, flecha&quot;</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">saludoDos</span><span class="p">());</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Hello World, flecha</span>
+</pre></div>
+</div>
+<p>Hay que tener cuidado cuando se usa la palabra clave <em>this</em> en las funciones de flecha, ya que muchas veces hacen referencia
+a otros elementos diferentes de los que pensamos. Por eso, no es recomendable usar este tipo de funciones como métodos de clase, puesto
+que los <em>this</em> que usemos no harán referencia a la instancia que llame la función, sino al entorno original en el que se
+crearon las funciones de flecha.</p>
+<p>Cuando pasamos funciones dentro de funciones, es mucho más cómodo usar funciones de flecha como argumentos, por
+ejemplo:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">listaCompraKeys</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">listaCompra</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb">/s`</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="nx">listaCompraKeys</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">listaCompra</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb">/s`</span><span class="p">)</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>Ambos ejemplos son lo mismo, pero el segundo es visualmente más claro.</p>
+</section>
+<section id="declaracion-de-variables-var-let-y-const">
+<h2>Declaración de variables: var, let y const<a class="headerlink" href="#declaracion-de-variables-var-let-y-const" title="Link to this heading">¶</a></h2>
+<p>Para poder asignar un valor a una variables, es decir, inicializarla, es necesario declararla. <code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">variable</span></code>, <code class="docutils literal notranslate"><span class="pre">let</span> <span class="pre">variable</span></code> y <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">variable</span></code> permiten hacerlo, aunque con diferencias.
+Una variable declarada con <em>var</em> puede ser redeclarada y reasignada un valor. La declaración con <em>var</em> tiene alcance de función, si se declara dentro de una función, el ámbito global externo no la verá.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">variableUno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Ejemplo externo 1&quot;</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">variableUno</span><span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">variableUno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Ejemplo externo 2&quot;</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">variableUno</span><span class="p">);</span>
+<span class="nx">variableUno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Ejemplo externo 3&quot;</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">variableUno</span><span class="p">);</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">ejemplo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">variableUno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Ejemplo función&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">variableUno</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">ejemplo</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">variableUno</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Ejemplo externo 1</span>
+<span class="go">Ejemplo externo 2</span>
+<span class="go">Ejemplo externo 3</span>
+<span class="go">Ejemplo función</span>
+<span class="go">Ejemplo externo 3</span>
+</pre></div>
+</div>
+<p>La variableUno de dentro de la función ejemplo no es vista por el entorno externo. En el entorno externo podéis ver
+cómo he redeclarado la función y he reasignado valores. Esto podría causar errores graves en programas grandes en los que,
+tal vez, ya hemos declarado una función con un nombre determinado. Por eso están <em>let</em> y <em>const</em>, ambos sólo pueden ser declarados
+una vez con un determinado nombre, evitando redeclaraciones, pero <em>let</em> permite cambiar el valor interno de esa variable.
+Las variables declaradas con <em>let</em> y <em>const</em> sólo son visibles dentro de su ámbito, en su caso en bloques separados por <code class="docutils literal notranslate"><span class="pre">{}</span></code>.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">variableLet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Ejemplo 1&quot;</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">variableLet</span><span class="p">);</span>
+<span class="nx">variableLet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Ejemplo 2&quot;</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">variableLet</span><span class="p">);</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">variableLet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Ejemplo 3&quot;</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">variableLet</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">SyntaxError: Identifier &#39;variableLet&#39; has already been declared</span>
+</pre></div>
+</div>
+<p>La reasignación de valor no ha dado error, pero su redeclaración con <code class="docutils literal notranslate"><span class="pre">let</span> <span class="pre">variableLet</span></code> nos da el error
+o advertencia de que una variable con ese nombre ya ha sido declarada en ese ámbito. La declaración con <em>const</em> lo
+lleva un paso más allá y no permite ni reasignar un valor a una variable.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">variableConst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Ejemplo 1&quot;</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">variableConst</span><span class="p">);</span>
+<span class="nx">variableConst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Ejemplo 2&quot;</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">variableConst</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">TypeError: Assignment to constant variable.</span>
+</pre></div>
+</div>
+<p>Es recomendable usar <em>let</em> cuando queramos iterar y reasignar valores. Cuando queramos que un valor no cambie y sea constante,
+utilizaremos <em>const</em>.</p>
+</section>
+<section id="deconstruccion-de-variable-y-operador-spread">
+<h2>Deconstrucción de variable y operador <em>spread</em><a class="headerlink" href="#deconstruccion-de-variable-y-operador-spread" title="Link to this heading">¶</a></h2>
+<p>Consiste, literalmente, en descomponer <em>arrays</em> y objetos en sus elementos internos y asignarlos como valor de una variable. Si tengo un <em>array</em> con tres números
+tal que así:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>Puedo descomponerlo poniendo <code class="docutils literal notranslate"><span class="pre">[]</span></code>, porque es un <em>array</em>, y dentro de los corchetes los nombres que quiero que tengan las variables
+en las que se va a descomponer ese <em>array</em>.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">numUno</span><span class="p">,</span><span class="w"> </span><span class="nx">numDos</span><span class="p">,</span><span class="w"> </span><span class="nx">numTres</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">numbers</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Ahora tenemos tres variables, llamadas <code class="docutils literal notranslate"><span class="pre">numUno</span></code>, <code class="docutils literal notranslate"><span class="pre">numDos</span></code> y <code class="docutils literal notranslate"><span class="pre">numTres</span></code>, albergando cada una
+uno de los valores. Lo mismo se puede hacer con las propiedades de un objeto, aunque en ese caso debemos usar <code class="docutils literal notranslate"><span class="pre">{}</span></code> y el
+mismo nombre de variable que la llave usada para el valor que queramos (los objetos no se deconstruyen ordenados por índices, sino por palabras clave-llave).</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">ejemplo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Ejemplo&quot;</span><span class="p">,</span>
+<span class="nx">edad</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;No tiene edad&quot;</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">nombre</span><span class="p">,</span><span class="w"> </span><span class="nx">edad</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ejemplo</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Así capturamos esos valores dentro de variables. Tanto para <em>arrays</em> como para objetos, existe un operador llamado <em>spread</em> (extender), activado con <code class="docutils literal notranslate"><span class="pre">...</span></code> delante
+del elemento que queramos deconstruir, que permite hacer algo parecido a lo visto anteriormente. Supongamos que tenemos dos <em>arrays</em>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">];</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">numbersTwo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>Queremos juntarlos en uno, pero si hacemos esto:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">numbersThree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nx">numbers</span><span class="p">,</span><span class="w"> </span><span class="nx">numbersTwo</span><span class="p">];</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numbersThree</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">[ [ 1, 2, 3 ], [ 4, 5, 6 ] ]</span>
+</pre></div>
+</div>
+<p>Vemos que hemos ocasionado que un <em>array</em> haya anidado dentro de otro. Sin embargo, nosotros queríamos un único <em>array</em> con los valores individuales de ambos <em>arrays</em>.
+Usemos <code class="docutils literal notranslate"><span class="pre">...</span></code> para deconstruirlo:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">numbersFour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[...</span><span class="nx">numbers</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="nx">numbersTwo</span><span class="p">];</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numbersFour</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">[ 1, 2, 3, 4, 5, 6 ]</span>
+</pre></div>
+</div>
+<p>Lo mismo se podría hacer con objetos. De hecho, vosotros vais a hacerlo. Aquí tenéis un ejemplo inacabado, intentad que <code class="docutils literal notranslate"><span class="pre">ejemploDos</span></code> tenga una copia de las propiedades de <code class="docutils literal notranslate"><span class="pre">ejemploUno</span></code>
+dentro, pero que no esté anidado el <code class="docutils literal notranslate"><span class="pre">ejemploUno</span></code> en el <code class="docutils literal notranslate"><span class="pre">ejemploDos</span></code>.</p>
+<div class="livecodes" style="height: 300px;" data-options='{"appUrl":"https://v24.livecodes.io/","config":{"activeEditor":"script","tools":{"enabled":"all","status":"full","active":"console"}},"loading":"eager"}'>
+<pre data-lang="html"></pre>
+<pre data-lang="css"></pre>
+<pre data-lang="javascript">const ejemploUno = {
+    llaveUno: &#34;Valor 1&#34;,
+    llaveDos: &#34;Valor 2&#34;,
+}
+
+const ejemploDos = {
+    llaveTres: &#34;Valor 3&#34;,
+    ejemploUno,
+}
+
+console.log(ejemploDos);
+</pre>
+</div>
+<script defer src="https://unpkg.com/livecodes@0.4.0/livecodes.umd.js" data-prefill></script></section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Curso Full Stack</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navegación</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../m3c5/m3c5_index.html">M3C5 (Python)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m3c6/m3c6_index.html">M3C6 (Python y bases de datos)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m4c7/m4c7_index.html">M4C7 (Javascript)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="m4c8_index.html">M4C8 (Javascript)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="m4c8_bucles.html">Bucles</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Funciones y variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m4c8_promesa.html">Promesas y asincronía</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m4c8_oop.html">Programación orientada a objetos (OOP)</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="m4c8_index.html">M4C8 (Javascript)</a><ul>
+      <li>Previous: <a href="m4c8_bucles.html" title="capítulo anterior">Bucles</a></li>
+      <li>Next: <a href="m4c8_promesa.html" title="próximo capítulo">Promesas y asincronía</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Endika de la Iglesia.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="../../_sources/rst_files/m4c8/m4c8_funciones.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html lang="es" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Promesas y asincronía &#8212; documentación de Curso Full Stack - 0.0.2</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=58349a41"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/translations.js?v=efdbd0b9"></script>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="Programación orientada a objetos (OOP)" href="m4c8_oop.html" />
+    <link rel="prev" title="Funciones y variables" href="m4c8_funciones.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="promesas-y-asincronia">
+<h1>Promesas y asincronía<a class="headerlink" href="#promesas-y-asincronia" title="Link to this heading">¶</a></h1>
+<p>En esta sección se tratarán dos temas muy importantes de JS, relacionadas de manera directa con el correcto funcionamiento
+de procesos en aplicaciones web. Todo lo que se explicará es posible al ser JS un lenguaje que se ejecuta de manera asíncrona, no
+es necesario que los procesos anteriores de un <em>script</em> se hayan completado para que otro código puede también ser ejecutado.
+Las operaciones no bloquean la ejecución del programa completo. Básicamente, JS permite que múltiples tareas se realicen de forma
+simultánea sin bloquear la ejecución principal. Esto es muy útil en situaciones en las que hay operaciones que pueden llevar tiempo, como, por ejemplo, lectura
+de archivos, solicitudes a servidores o interacciones con bases de datos y APIs.</p>
+<section id="promesas">
+<h2>Promesas<a class="headerlink" href="#promesas" title="Link to this heading">¶</a></h2>
+<p>Las promesas en JS implican que el código espera recibir algún tipo de dato sobre el que ejecutar funciones. Se le hace la promesa
+de recibir los datos, en caso de recibirlos, se resuelve la promesa (<em>resolve</em>), si no se reciben, la promesa es rechazada (<em>reject</em>).</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">ejemploPromesa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;Promesa cumplida&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="mf">3000</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">reject</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;Promesa no cumplida&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="mf">3000</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>En este código tenemos la promesa de retornar un mensaje u otro en caso de cumplirse la promesa tras una espera (<code class="docutils literal notranslate"><span class="pre">setTimeout()</span></code>)
+de 3 segundos (3000 por ser en milisegundos). En este caso siempre se cumplirá la promesa, no obstante, si cambiáramos el código para
+recabar información web (usaremos <code class="docutils literal notranslate"><span class="pre">fetch()</span></code>, que es un método basado en la generación de una promesa). Además, usaremos el método <code class="docutils literal notranslate"><span class="pre">then</span></code> para
+hacer algo si se cumple la promesa y <code class="docutils literal notranslate"><span class="pre">catch</span></code> para pillar el fallo si no se cumple.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">repositoriosPromise</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;https://api.github.com/users/Endika-de-la-Iglesia/repos&quot;</span><span class="p">);</span>
+
+<span class="nx">repositoriosPromise</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">datos</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">datos</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">datos</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">datos</span><span class="p">);</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="w">    </span><span class="p">})</span>
+</pre></div>
+</div>
+<p>Capturamos los datos recibidos desde la URL, los transformamos a json y los imprimimos. Si se diera el caso de haber un error,
+gracias a <code class="docutils literal notranslate"><span class="pre">catch</span></code> podríamos capturarlo e imprimirlo.</p>
+</section>
+<section id="asincronia-await-y-async">
+<h2>Asincronía: <em>await</em> y <em>async</em><a class="headerlink" href="#asincronia-await-y-async" title="Link to this heading">¶</a></h2>
+<p>Los términos <em>async</em> y <em>await</em> son utilizados para gestionar promesas de manera asíncrona. Muchas veces tendremos promesas que capturarán
+datos cuando se resuelvan y usarán esos datos para resolver otras promesas, vamos que tendremos funciones esperando a que se les proporcionen
+unos elementos sin los que no pueden trabajar. Con <em>async</em> se declaran funciones que devuelven promesas y, dentro de esas funciones, se puede usar <em>await</em>
+para esperar a que una promesa se cumpla. Las funciones asíncronas son pacientes con las promesas, y ordenadas. Hasta que no se resuelve una función,
+no salta la siguiente, esto obviamente ocurre si las promesas están dentro de la misma función asíncrona.</p>
+<p>El ejemplo que voy a mostrar un caso en el que un usuario aporta un nombre y el programa lo imprime. El problema es que el programa tarda
+6 segundos en recibir la información sobre el nombre e imprimirla es instantáneo. Si ambos procesos empezaran a la vez, de manera asíncrona, tendríamos
+que antes de dar el nombre ya estaría impreso, lo cual es imposible.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">aportarNombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="w"> </span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;Endika&quot;</span><span class="p">)}</span>
+<span class="w">            </span><span class="p">,</span><span class="w"> </span><span class="mf">6000</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">imprimirNombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Hola, </span><span class="si">${</span><span class="nx">nombre</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">saludo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">nombrePromesa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">aportarNombre</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">imprimirNombre</span><span class="p">(</span><span class="nx">nombrePromesa</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">saludo</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Hola, [object Promise]</span>
+</pre></div>
+</div>
+<p>Como se imprime antes de que se devuelva el nombre, lo que se imprime es el objeto de la promesa, que
+está pendiente de ser cumplida. Si usáramos <code class="docutils literal notranslate"><span class="pre">async</span></code> y <code class="docutils literal notranslate"><span class="pre">await</span></code> podríamos librarnos de eso.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">aportarNombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="w"> </span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;Endika&quot;</span><span class="p">)}</span>
+<span class="w">            </span><span class="p">,</span><span class="w"> </span><span class="mf">6000</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">imprimirNombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Hola, </span><span class="si">${</span><span class="nx">nombre</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">saludo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">nombrePromesa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">aportarNombre</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">imprimirNombre</span><span class="p">(</span><span class="nx">nombrePromesa</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">saludo</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Hola, Endika</span>
+</pre></div>
+</div>
+<p>En este ejemplo, el <em>await</em> hace que <code class="docutils literal notranslate"><span class="pre">imprimirNombre</span></code> se ejecute sólo cuando la promesa de <code class="docutils literal notranslate"><span class="pre">aportarNombre()</span></code> se cumpla.
+Cuando la promesa se cumple, se devuelve el valor del nombre, que es capturado correctamente por la variable <code class="docutils literal notranslate"><span class="pre">nombrePromesa</span></code>.
+Ese nombre se usa como argumento de la función de impresión.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Curso Full Stack</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navegación</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../m3c5/m3c5_index.html">M3C5 (Python)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m3c6/m3c6_index.html">M3C6 (Python y bases de datos)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m4c7/m4c7_index.html">M4C7 (Javascript)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="m4c8_index.html">M4C8 (Javascript)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="m4c8_bucles.html">Bucles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m4c8_funciones.html">Funciones y variables</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Promesas y asincronía</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m4c8_oop.html">Programación orientada a objetos (OOP)</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="m4c8_index.html">M4C8 (Javascript)</a><ul>
+      <li>Previous: <a href="m4c8_funciones.html" title="capítulo anterior">Funciones y variables</a></li>
+      <li>Next: <a href="m4c8_oop.html" title="próximo capítulo">Programación orientada a objetos (OOP)</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Endika de la Iglesia.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="../../_sources/rst_files/m4c8/m4c8_promesa.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

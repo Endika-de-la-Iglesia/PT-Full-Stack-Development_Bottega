@@ -12,11 +12,15 @@ M4C8 (Javascript)
 ================================
 
 Esta es la documentación relativa al ejercicio M4C8. Aquí se explicarán conceptos relacionados al lenguaje de programación
-Javascript.
+Javascript, incluyendo bucles, funciones, declaración de variables y promesas.
 
 .. toctree::
    :maxdepth: 2
 
-   m4c8_javascript
+   m4c8_bucles
+   m4c8_funciones
+   m4c8_promesa
+   m4c8_oop
+
 
 .. sphinx-build -M html docs/source docs/_build

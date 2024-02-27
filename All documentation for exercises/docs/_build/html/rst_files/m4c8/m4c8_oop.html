@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html lang="es" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Programación orientada a objetos (OOP) &#8212; documentación de Curso Full Stack - 0.0.2</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=58349a41"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/translations.js?v=efdbd0b9"></script>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="m4c8_promesa.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="programacion-orientada-a-objetos-oop">
+<h1>Programación orientada a objetos (OOP)<a class="headerlink" href="#programacion-orientada-a-objetos-oop" title="Link to this heading">¶</a></h1>
+<p>En JS, la programación orientada a objetos se refiere al uso de elementos de código, denominados objetos,
+para agrupar datos y métodos (funciones) que se ejecutan sobre esos datos con el fin de diseñar y organizar los
+programas. Al igual que con <a class="reference internal" href="../m3c6/m3c6_classes.html"><span class="doc">Python</span></a>, es muy importante entender las clases y los objetos (instancias de las clases).</p>
+<section id="clases-e-instancias">
+<h2>Clases e instancias<a class="headerlink" href="#clases-e-instancias" title="Link to this heading">¶</a></h2>
+<p>Vamos a usar el mismo ejemplo que se utilizó en Python para contruir una clase, llamada personaje,
+que nos permitirá generar instancias (objetos) del tipo personaje de juego de rol.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span><span class="w"> </span><span class="nx">Personaje</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">nombre</span><span class="p">,</span><span class="w"> </span><span class="nx">raza</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">_nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">nombre</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">_raza</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">raza</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="nx">juego</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;D&amp;D&quot;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">nombre</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_nombre</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">raza</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_raza</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">ataque</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;Ataque&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="nx">saludar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;Saludos, aventurero&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Este ejemplo es simplemente para ver la sintaxis específica de JS vs la de Python. Para iniciar una instancia
+de Personaje, necesitamos un <code class="docutils literal notranslate"><span class="pre">constructor(parámetros)</span></code>, que es lo mismo que <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> en Python.
+Dentro del constructor declaramos y asignamos valores a los atributos de la instancia que se cree usando
+esa clase como plantilla. Asimismo, fuera del constructor, tenemos un atributo estático de clase que es el juego
+al que pertenece el personaje, <code class="docutils literal notranslate"><span class="pre">static</span></code> está delante de esa variable para indicar que es de la clase y no del objeto generado
+con su «plano». Después, tenemos toda una serie de métodos de la instancia, tales como decir el nombre, raza o realizar una acción varias.
+Por último, tenemos <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">saludar()</span></code> que es un método de la clase, y no la instancia. Veamos cómo generar una instancia y usarla
+para realizar acciones.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">nuevoPersonaje</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Personaje</span><span class="p">(</span><span class="s2">&quot;Legolas&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Elfo del bosque&quot;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">nuevoPersonaje</span><span class="p">.</span><span class="nx">nombre</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">nuevoPersonaje</span><span class="p">.</span><span class="nx">ataque</span><span class="p">());</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Personaje</span><span class="p">.</span><span class="nx">saludar</span><span class="p">());</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">Legolas</span>
+<span class="go">Ataque</span>
+<span class="go">Saludos, aventurero</span>
+</pre></div>
+</div>
+<p>En la primera línea vemos como instanciar la clase de personaje pasándole dos atributos al constructor.
+En la segunda usamos un método <code class="docutils literal notranslate"><span class="pre">getter</span></code> para dar información sobre un atributo de la instancia (nótese la sintaxis
+de <code class="docutils literal notranslate"><span class="pre">instancia.getter</span></code>). En la tercera usamos un método de instancia (<code class="docutils literal notranslate"><span class="pre">instancia.método()</span></code>).
+En la cuarta usamos un método estático de la clase (importante: no ponemos <code class="docutils literal notranslate"><span class="pre">instancia.métodoEstático()</span></code> lo que ponemos
+es <code class="docutils literal notranslate"><span class="pre">nombreClase.métodoEstático()</span></code>).</p>
+<p>Como quizá no haya quedado claro del todo, quiero que creéis una instancia de la clase <code class="docutils literal notranslate"><span class="pre">Personaje</span></code>, le asignéis un nombre y una raza, y os
+lo diga. Para lograrlo, tenéis que completar los huecos del código de ejemplo.</p>
+<div class="livecodes" style="height: 600px;" data-options='{"appUrl":"https://v24.livecodes.io/","config":{"activeEditor":"script","tools":{"enabled":"all","status":"full","active":"console"}},"loading":"eager"}'>
+<pre data-lang="html"></pre>
+<pre data-lang="css"></pre>
+<pre data-lang="javascript">class Personaje {
+    constructor(nombre, raza) {
+        this._nombre = nombre;
+        this._raza = raza;
+    }
+
+    static juego = &#34;D&amp;D&#34;;
+
+    get nombre() {
+        return this._nombre;
+    }
+
+    get raza() {
+        return this._raza;
+    }
+
+    ataque() {
+        return &#34;Ataque&#34;;
+    }
+
+    static saludar() {
+        return &#34;Saludos, aventurero&#34;
+    }
+};
+
+const nuevoPersonaje = PONED AQUÍ EL CÓDIGO;
+console.log(`Me llamo ${nuevoPersonaje.nombre} y soy un ${PONED CÓDIGO}`);
+</pre>
+</div>
+<script defer src="https://unpkg.com/livecodes@0.4.0/livecodes.umd.js" data-prefill></script></section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Curso Full Stack</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navegación</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../m3c5/m3c5_index.html">M3C5 (Python)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m3c6/m3c6_index.html">M3C6 (Python y bases de datos)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m4c7/m4c7_index.html">M4C7 (Javascript)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="m4c8_index.html">M4C8 (Javascript)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="m4c8_bucles.html">Bucles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m4c8_funciones.html">Funciones y variables</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Programación orientada a objetos (OOP)</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="m4c8_index.html">M4C8 (Javascript)</a><ul>
+      <li>Previous: <a href="m4c8_promesa.html" title="capítulo anterior">&lt;no title&gt;</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Endika de la Iglesia.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="../../_sources/rst_files/m4c8/m4c8_oop.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

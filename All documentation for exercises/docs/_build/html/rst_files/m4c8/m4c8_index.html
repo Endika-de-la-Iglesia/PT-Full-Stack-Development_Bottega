@@ -14,7 +14,7 @@
     <script src="../../_static/translations.js?v=efdbd0b9"></script>
     <link rel="index" title="Índice" href="../../genindex.html" />
     <link rel="search" title="Búsqueda" href="../../search.html" />
-    <link rel="next" title="Javascript, conceptos básicos" href="m4c8_javascript.html" />
+    <link rel="next" title="Bucles" href="m4c8_bucles.html" />
     <link rel="prev" title="Javascript, conceptos básicos" href="../m4c7/m4c7_javascript.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -36,17 +36,29 @@
   <section id="m4c8-javascript">
 <h1>M4C8 (Javascript)<a class="headerlink" href="#m4c8-javascript" title="Link to this heading">¶</a></h1>
 <p>Esta es la documentación relativa al ejercicio M4C8. Aquí se explicarán conceptos relacionados al lenguaje de programación
-Javascript.</p>
+Javascript, incluyendo bucles, funciones, declaración de variables y promesas.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="m4c8_javascript.html">Javascript, conceptos básicos</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="m4c8_javascript.html#tipos-de-datos-en-javascript">Tipos de datos en Javascript</a></li>
-<li class="toctree-l2"><a class="reference internal" href="m4c8_javascript.html#datos-de-tipo-cadena">Datos de tipo cadena</a></li>
-<li class="toctree-l2"><a class="reference internal" href="m4c8_javascript.html#condicionales">Condicionales</a></li>
-<li class="toctree-l2"><a class="reference internal" href="m4c8_javascript.html#operador-ternario">Operador ternario</a></li>
-<li class="toctree-l2"><a class="reference internal" href="m4c8_javascript.html#funciones">Funciones</a></li>
-<li class="toctree-l2"><a class="reference internal" href="m4c8_javascript.html#la-palabra-clave-this">La palabra clave <em>this</em></a></li>
-<li class="toctree-l2"><a class="reference internal" href="m4c8_javascript.html#ejercicio-propuesto">Ejercicio propuesto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m4c8_bucles.html">Bucles</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="m4c8_bucles.html#for">for</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m4c8_bucles.html#while">while</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m4c8_bucles.html#ejercicio-propuesto">Ejercicio propuesto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m4c8_bucles.html#consola-de-pruebas">Consola de pruebas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="m4c8_funciones.html">Funciones y variables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="m4c8_funciones.html#las-funciones-de-flecha">Las funciones de flecha</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m4c8_funciones.html#declaracion-de-variables-var-let-y-const">Declaración de variables: var, let y const</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m4c8_funciones.html#deconstruccion-de-variable-y-operador-spread">Deconstrucción de variable y operador <em>spread</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="m4c8_promesa.html">Promesas y asincronía</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="m4c8_promesa.html#promesas">Promesas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m4c8_promesa.html#asincronia-await-y-async">Asincronía: <em>await</em> y <em>async</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="m4c8_oop.html">Programación orientada a objetos (OOP)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="m4c8_oop.html#clases-e-instancias">Clases e instancias</a></li>
 </ul>
 </li>
 </ul>
@@ -75,7 +87,10 @@ Javascript.</p>
 <li class="toctree-l1"><a class="reference internal" href="../m3c6/m3c6_index.html">M3C6 (Python y bases de datos)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../m4c7/m4c7_index.html">M4C7 (Javascript)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">M4C8 (Javascript)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="m4c8_javascript.html">Javascript, conceptos básicos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m4c8_bucles.html">Bucles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m4c8_funciones.html">Funciones y variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m4c8_promesa.html">Promesas y asincronía</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m4c8_oop.html">Programación orientada a objetos (OOP)</a></li>
 </ul>
 </li>
 </ul>
@@ -85,7 +100,7 @@ Javascript.</p>
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
       <li>Previous: <a href="../m4c7/m4c7_javascript.html" title="capítulo anterior">Javascript, conceptos básicos</a></li>
-      <li>Next: <a href="m4c8_javascript.html" title="próximo capítulo">Javascript, conceptos básicos</a></li>
+      <li>Next: <a href="m4c8_bucles.html" title="próximo capítulo">Bucles</a></li>
   </ul></li>
 </ul>
 </div>

@@ -304,6 +304,8 @@ a la expresión activada si el primer condicional es falso.
 Repito que esto no es recomendable, siempre es mejor que se entienda bien el funcionamiento del código;
 debe primar la legibilidad al ahorro de líneas de código.
 
+.. _javascript-funciones:
+
 Funciones
 ---------------
 

@@ -561,3 +561,16 @@ Dado que una imagen vale más que mil palabras, aquí dejo un diagrama explicand
 
 .. image:: ../../images/m4c7/m4c7_exercise.png
     :alt: Diagrama de flujo de la función 
+
+.. raw:: html
+
+    <div class="livecodes" style="height: 300px;" data-options='{"appUrl":"https://v24.livecodes.io/","config":{"title":"javascript_playground","activeEditor":"script","tools":{"enabled":"all","status":"full","active":"console"}}}'>
+    <pre data-lang="html"></pre>
+    <pre data-lang="css">
+    </pre>
+    <pre data-lang="javascript">console.log(&#34;Just testing&#34;);
+    console.log(&#34;Just testing, second message&#34;);</pre>
+    </div>
+    <script defer src="https://unpkg.com/livecodes@0.4.0/livecodes.umd.js" data-prefill></script>
+
+

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html lang="es" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Bucles &#8212; documentación de Curso Full Stack - 0.0.2</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=58349a41"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/translations.js?v=efdbd0b9"></script>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="Funciones y variables" href="m4c8_funciones.html" />
+    <link rel="prev" title="M4C8 (Javascript)" href="m4c8_index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="bucles">
+<h1>Bucles<a class="headerlink" href="#bucles" title="Link to this heading">¶</a></h1>
+<p>Los bucles son líneas de código que nos permiten iterar un determinado número de veces sobre unos datos. Como su propio nombre indica, entramos en
+un bucle que repite una acción hasta que se cumple una condición. En una documentación anterior se encuentran explicados los bucles, con todo lujo de detalles,
+para <a class="reference internal" href="../m3c5/m3c5_bucles.html"><span class="doc">Python</span></a>. En esta ocasión se explicará la sintaxis específica de JS para iterar sobre objetos.
+En la sección de Python se muestra cómo tener una lista de la compra en forma de diccionario, en esta ocasión, lo más similar a un diccionario en JS
+son los objetos con pares de llave-valor.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">listaCompra</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">manzana</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">pera</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">plátano</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">fresa</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="for">
+<h2>for<a class="headerlink" href="#for" title="Link to this heading">¶</a></h2>
+<p>Podríamos imprimir cada pareja por su lado, pero queremos automatizar la iteración, de tal manera que con sólo imprimir una vez un elemento podamos
+repetir la acción tantas veces como «propiedades» (llaves o elementos) tengamos, en este caso cuatro veces. La sintaxis usando <code class="docutils literal notranslate"><span class="pre">for</span></code> es poner después de
+esa palabra clave <code class="docutils literal notranslate"><span class="pre">(contador;</span> <span class="pre">condición</span> <span class="pre">a</span> <span class="pre">cumplir;</span> <span class="pre">contador</span> <span class="pre">+</span> <span class="pre">1)</span> <span class="pre">{acción</span> <span class="pre">a</span> <span class="pre">iterar}</span></code>. Como contador se usa <code class="docutils literal notranslate"><span class="pre">i</span></code>, que hay que declararlo (usando <code class="docutils literal notranslate"><span class="pre">let</span></code>, ya se explicará
+más adelante ese término) y asignarle un valor
+de 0 para que empiece desde el principio <code class="docutils literal notranslate"><span class="pre">let</span> <span class="pre">i</span> <span class="pre">=</span> <span class="pre">0</span></code>. La condición a cumplir suele ser <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">&lt;</span> <span class="pre">número</span> <span class="pre">de</span> <span class="pre">veces</span> <span class="pre">que</span> <span class="pre">queramos</span> <span class="pre">iterar</span></code>, no se pone menor
+igual porque empezamos desde 0, no desde 1. Para poner contador + 1 se escribe con la notación <code class="docutils literal notranslate"><span class="pre">i++</span></code>, consiguiendo que en cada ciclo aumente uno el contador.
+Veamos cómo imprimir mi lista de la compra de la frutería.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">listaCompraKeys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">listaCompra</span><span class="p">);</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">listaCompraKeys</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">listaCompraKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">listaCompraKeys</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">listaCompra</span><span class="p">[</span><span class="nx">listaCompraKey</span><span class="p">]</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">listaCompraKey</span><span class="si">}</span><span class="sb">(s)`</span><span class="p">);</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">3 manzana(s)</span>
+<span class="go">1 pera(s)</span>
+<span class="go">8 plátano(s)</span>
+<span class="go">20 fresa(s)</span>
+</pre></div>
+</div>
+<p>Para poder iterar sobre un objeto en JS, es necesario obtener un <em>array</em> con las llaves mediante <code class="docutils literal notranslate"><span class="pre">Object.keys()</span></code> y
+determinar su longitud con <code class="docutils literal notranslate"><span class="pre">length</span></code>. Después, accedemos en cada iteración a una llave mediante el índice <code class="docutils literal notranslate"><span class="pre">i</span></code> sobre
+el <em>array</em> (<code class="docutils literal notranslate"><span class="pre">array[índiceActual]</span></code>). Finalmente, obtenemos el valor de la llave <code class="docutils literal notranslate"><span class="pre">objeto[llave]</span></code>. Aquí podéis ver un caso
+de interpolación (sustitución dinámica de texto) en JS, ponemos <code class="docutils literal notranslate"><span class="pre">(`${variable</span> <span class="pre">u</span> <span class="pre">objeto}`)</span></code> para conseguir
+ese efecto.</p>
+<p>Esta no es la única manera de usar un bucle <em>for</em>, también podemos escribir:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">listaCompraKeyIndex</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">listaCompraKeys</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">listaCompraKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">listaCompraKeys</span><span class="p">[</span><span class="nx">listaCompraKeyIndex</span><span class="p">];</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">listaCompra</span><span class="p">[</span><span class="nx">listaCompraKey</span><span class="p">]</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">listaCompraKey</span><span class="si">}</span><span class="sb">(s)`</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Es exactamente lo mismo. Con objetos podemos usar este bucle de manera mucho más sencilla, en lugar de
+generar un <em>array</em> con las llaves (propiedades) del objeto, podemos iterar sobre las llaves mismas al no haber
+índices en un objeto. Con <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">(let</span> <span class="pre">i</span> <span class="pre">=</span> <span class="pre">0;</span> <span class="pre">...)</span></code> no se puede hacer, pero, con este segundo método de <code class="docutils literal notranslate"><span class="pre">índice</span> <span class="pre">en</span> <span class="pre">array</span></code>, podemos
+hacer <code class="docutils literal notranslate"><span class="pre">llave</span> <span class="pre">en</span> <span class="pre">objeto</span></code>.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">listaCompra</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">listaCompra</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb">(s)`</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Todas estas opciones son idénticas. Esta última sería la mejor por claridad de lo que se hace. En los dos primeros ejemplos
+iterábamos sobre los índices del <em>array</em>, mientras que aquí iteramos sobre los elementos. Por eso,
+nos ahorramos tener que poner <code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">key</span> <span class="pre">=</span> <span class="pre">listaCompraKeys[índice]</span></code>, porque iteramos sobre las llaves
+directamente.</p>
+<p>Cuando trabajemos con objetos y con <em>arrays</em> podemos usar
+el método <code class="docutils literal notranslate"><span class="pre">forEach</span></code>, que nos permite hacer algo parecido.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">listaCompraKeys</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">listaCompra</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb">(s)`</span><span class="p">)</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>Podemos apreciar que con <code class="docutils literal notranslate"><span class="pre">forEach</span></code> la sintaxis se basa en meter dentro de un método una expresión de función que acepta como argumento
+la llave actual sobre la que se está iterando. Ese argumento es usado dentro de esta función anónima para llevar a cabo un efecto.</p>
+</section>
+<section id="while">
+<h2>while<a class="headerlink" href="#while" title="Link to this heading">¶</a></h2>
+<p>En vez de utilizar <em>for</em>, podemos usar <em>while</em>, que permite hacer lo mismo con una sintaxis diferente.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">listaCompraKeys</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">listaCompraKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">listaCompraKeys</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">listaCompra</span><span class="p">[</span><span class="nx">listaCompraKey</span><span class="p">]</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">listaCompraKey</span><span class="si">}</span><span class="sb">(s)`</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">i</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Nótese que es idéntico a nuestro primer bucle <em>for</em>, pero declaramos e iniciamos el contador i fuera del bucle, ponemos entre paréntesis nuestra condición y
+añadimos 1 al contador al acabar la tarea del bucle. Existe otro tipo de bucle con <em>while</em>, llamado <em>do while</em>, que es muy parecido, aunque tiene la ventaja de garantizar
+que al menos se realizará una vez por tener la condición al final del bucle.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+
+<span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">listaCompraKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">listaCompraKeys</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">listaCompra</span><span class="p">[</span><span class="nx">listaCompraKey</span><span class="p">]</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">listaCompraKey</span><span class="si">}</span><span class="sb">(s)`</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">i</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">listaCompraKeys</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Si le metiéramos un <em>array</em> vacío (<code class="docutils literal notranslate"><span class="pre">listaCompraKeys.length</span> <span class="pre">===</span> <span class="pre">0</span></code>), daría un error, ya que intentaría ejecutarse sí o sí, al tener al final la condición. En los otros casos,
+como la condición está antes del bloque, detectaría que <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">===</span> <span class="pre">0</span></code> y no se ejecutaría ni una vez, evitando un error. A veces, nos interesa correr un código al menos una vez
+y, después, iterar en función de una condición, en esos casos, sería útil.</p>
+</section>
+<section id="ejercicio-propuesto">
+<h2>Ejercicio propuesto<a class="headerlink" href="#ejercicio-propuesto" title="Link to this heading">¶</a></h2>
+<p>Nos han propuesto dos ejercicios basados en bucles. Cree un bucle for en JS que imprima cada nombre de esta lista:</p>
+<p><code class="docutils literal notranslate"><span class="pre">myList</span> <span class="pre">=</span> <span class="pre">[&quot;velma&quot;,</span> <span class="pre">&quot;scout&quot;,</span> <span class="pre">&quot;jane&quot;,</span> <span class="pre">&quot;john&quot;,</span> <span class="pre">&quot;harry&quot;]</span></code></p>
+<p>Cree un bucle while que recorra la misma lista e imprima también los nombres.</p>
+<p>Bien, nos piden que creemos un bucle para <code class="docutils literal notranslate"><span class="pre">console.log(elemento)</span></code> de la lista. La lógica sería iterar tantas veces como elementos hay en la lista.
+Usando las explicaciones previas, debemos iterar por los índices del <em>array</em>, desde 0 hasta la longitud de la lista (menor que la longitud, porque no queremos iterar hasta ese
+número, sino hasta el anterior) e imprimir los elementos <code class="docutils literal notranslate"><span class="pre">myList[índice]</span></code>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">myList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;velma&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;scout&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;jane&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;john&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;harry&quot;</span><span class="p">];</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">myList</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myList</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Output</span>
+<span class="go">------</span>
+<span class="go">velma</span>
+<span class="go">scout</span>
+<span class="go">jane</span>
+<span class="go">john</span>
+<span class="go">harry</span>
+</pre></div>
+</div>
+<p>¡Conseguido! Ahora habría que cambiar la sintaxis a la de <em>while</em>. Recordemos, primero declaramos e inicializamos
+<code class="docutils literal notranslate"><span class="pre">i</span></code>, después, tras <em>while</em>, ponemos la condición, y, por último, antes de acabar el ciclo <code class="docutils literal notranslate"><span class="pre">i++</span></code> sumamos una al contador.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">myList</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myList</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+<span class="w">    </span><span class="nx">i</span><span class="o">++</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+<section id="consola-de-pruebas">
+<h2>Consola de pruebas<a class="headerlink" href="#consola-de-pruebas" title="Link to this heading">¶</a></h2>
+<p>Normalmente, cuando más se aprende es cuando se puede trastear con el código. Os propongo un reto, corregir
+el código proporcionado en la consola inferior para lograr imprimir los cinco nombres de la lista. Esa es otra manera de
+usar un bucle <em>for</em> para solucionar el ejercicio anterior. El objetivo es que al correr el código, en la consola, aparezcan los cinco
+nombres como <em>output</em>.</p>
+<div class="livecodes" style="height: 300px;" data-options='{"appUrl":"https://v24.livecodes.io/","config":{"activeEditor":"script","tools":{"enabled":"all","status":"full","active":"console"}},"loading":"eager"}'>
+<pre data-lang="html"></pre>
+<pre data-lang="css"></pre>
+<pre data-lang="javascript">const myList = [&#34;velma&#34;, &#34;scout&#34;, &#34;jane&#34;, &#34;john&#34;, &#34;harry&#34;];
+
+for (let nombre in myList) {
+    console.log(nombre);
+};</pre>
+</div>
+<script defer src="https://unpkg.com/livecodes@0.4.0/livecodes.umd.js" data-prefill></script></section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Curso Full Stack</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navegación</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../m3c5/m3c5_index.html">M3C5 (Python)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m3c6/m3c6_index.html">M3C6 (Python y bases de datos)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m4c7/m4c7_index.html">M4C7 (Javascript)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="m4c8_index.html">M4C8 (Javascript)</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Bucles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m4c8_funciones.html">Funciones y variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m4c8_promesa.html">Promesas y asincronía</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m4c8_oop.html">Programación orientada a objetos (OOP)</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="m4c8_index.html">M4C8 (Javascript)</a><ul>
+      <li>Previous: <a href="m4c8_index.html" title="capítulo anterior">M4C8 (Javascript)</a></li>
+      <li>Next: <a href="m4c8_funciones.html" title="próximo capítulo">Funciones y variables</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Endika de la Iglesia.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="../../_sources/rst_files/m4c8/m4c8_bucles.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

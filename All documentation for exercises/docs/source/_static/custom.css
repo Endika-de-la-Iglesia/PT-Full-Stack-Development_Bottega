@@ -32,6 +32,10 @@ div.sphinxsidebar {
     font-size: 85%;
 }
 
+div.livecodes {
+    margin-bottom: 10px;
+}
+
 div.footer {
     margin: 15px auto 20px auto;
     width: auto;
