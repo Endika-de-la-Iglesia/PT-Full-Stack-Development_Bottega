@@ -58,7 +58,7 @@ de recibir los datos, en caso de recibirlos, se resuelve la promesa (<em>resolve
 </div>
 <p>En este código tenemos la promesa de retornar un mensaje u otro en caso de cumplirse la promesa tras una espera (<code class="docutils literal notranslate"><span class="pre">setTimeout()</span></code>)
 de 3 segundos (3000 por ser en milisegundos). En este caso siempre se cumplirá la promesa, no obstante, si cambiáramos el código para
-recabar información web (usaremos <code class="docutils literal notranslate"><span class="pre">fetch()</span></code>, que es un método basado en la generación de una promesa). Además, usaremos el método <code class="docutils literal notranslate"><span class="pre">then</span></code> para
+recabar información web (usaremos <code class="docutils literal notranslate"><span class="pre">fetch()</span></code>, que es un método basado en la generación de una promesa), sí que podría salir mal la promesa. Además, usaremos el método <code class="docutils literal notranslate"><span class="pre">then</span></code> para
 hacer algo si se cumple la promesa y <code class="docutils literal notranslate"><span class="pre">catch</span></code> para pillar el fallo si no se cumple.</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">repositoriosPromise</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;https://api.github.com/users/Endika-de-la-Iglesia/repos&quot;</span><span class="p">);</span>
 
@@ -78,11 +78,11 @@ gracias a <code class="docutils literal notranslate"><span class="pre">catch</sp
 <section id="asincronia-await-y-async">
 <h2>Asincronía: <em>await</em> y <em>async</em><a class="headerlink" href="#asincronia-await-y-async" title="Link to this heading">¶</a></h2>
 <p>Los términos <em>async</em> y <em>await</em> son utilizados para gestionar promesas de manera asíncrona. Muchas veces tendremos promesas que capturarán
-datos cuando se resuelvan y usarán esos datos para resolver otras promesas, vamos que tendremos funciones esperando a que se les proporcionen
-unos elementos sin los que no pueden trabajar. Con <em>async</em> se declaran funciones que devuelven promesas y, dentro de esas funciones, se puede usar <em>await</em>
-para esperar a que una promesa se cumpla. Las funciones asíncronas son pacientes con las promesas, y ordenadas. Hasta que no se resuelve una función,
+datos cuando se resuelvan y usarán esos datos para resolver otras promesas, vamos, que tendremos funciones esperando a que se les proporcionen
+unos elementos sin los que no pueden trabajar. Con <em>async</em> se declaran funciones y, dentro de esas funciones, se puede usar <em>await</em>
+para esperar a que una promesa se cumpla. Las funciones asíncronas son pacientes con las promesas, y son ordenadas. Hasta que no se resuelve una promesa,
 no salta la siguiente, esto obviamente ocurre si las promesas están dentro de la misma función asíncrona.</p>
-<p>El ejemplo que voy a mostrar un caso en el que un usuario aporta un nombre y el programa lo imprime. El problema es que el programa tarda
+<p>El ejemplo que voy a mostrar es un caso en el que un usuario aporta un nombre y el programa lo imprime. El problema es que el programa tarda
 6 segundos en recibir la información sobre el nombre e imprimirla es instantáneo. Si ambos procesos empezaran a la vez, de manera asíncrona, tendríamos
 que antes de dar el nombre ya estaría impreso, lo cual es imposible.</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">aportarNombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -110,7 +110,7 @@ que antes de dar el nombre ya estaría impreso, lo cual es imposible.</p>
 <span class="go">Hola, [object Promise]</span>
 </pre></div>
 </div>
-<p>Como se imprime antes de que se devuelva el nombre, lo que se imprime es el objeto de la promesa, que
+<p>Como la ejecución del código de impresión no espera a que se devuelva el nombre, lo que se imprime es el objeto de la promesa, que
 está pendiente de ser cumplida. Si usáramos <code class="docutils literal notranslate"><span class="pre">async</span></code> y <code class="docutils literal notranslate"><span class="pre">await</span></code> podríamos librarnos de eso.</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">aportarNombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="w"> </span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>

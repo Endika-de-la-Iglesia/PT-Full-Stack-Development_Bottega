@@ -2,7 +2,7 @@ Programación orientada a objetos (OOP)
 =====================================
 
 En JS, la programación orientada a objetos se refiere al uso de elementos de código, denominados objetos,
-para agrupar datos y métodos (funciones) que se ejecutan sobre esos datos con el fin de diseñar y organizar los
+para agrupar datos y métodos (funciones), que se ejecutan sobre esos datos, con el fin de diseñar y organizar los
 programas. Al igual que con :doc:`Python <../m3c6/m3c6_classes>`, es muy importante entender las clases y los objetos (instancias de las clases).
 
 Clases e instancias
@@ -45,8 +45,8 @@ de Personaje, necesitamos un ``constructor(parámetros)``, que es lo mismo que `
 Dentro del constructor declaramos y asignamos valores a los atributos de la instancia que se cree usando
 esa clase como plantilla. Asimismo, fuera del constructor, tenemos un atributo estático de clase que es el juego
 al que pertenece el personaje, ``static`` está delante de esa variable para indicar que es de la clase y no del objeto generado
-con su «plano». Después, tenemos toda una serie de métodos de la instancia, tales como decir el nombre, raza o realizar una acción varias.
-Por último, tenemos ``static saludar()`` que es un método de la clase, y no la instancia. Veamos cómo generar una instancia y usarla 
+con su «plano». Después, tenemos toda una serie de métodos de la instancia, tales como decir el nombre, raza o realizar una acción.
+Por último, tenemos ``static saludar()`` que es un método de la clase, no de la instancia. Veamos cómo generar una instancia y usarla 
 para realizar acciones. 
 
 .. code-block:: javascript
@@ -67,7 +67,7 @@ para realizar acciones.
 En la primera línea vemos como instanciar la clase de personaje pasándole dos atributos al constructor.
 En la segunda usamos un método ``getter`` para dar información sobre un atributo de la instancia (nótese la sintaxis
 de ``instancia.getter``). En la tercera usamos un método de instancia (``instancia.método()``).
-En la cuarta usamos un método estático de la clase (importante: no ponemos ``instancia.métodoEstático()`` lo que ponemos
+En la cuarta usamos un método estático de la clase (importante: no ponemos ``instancia.métodoEstático()``, lo que ponemos
 es ``nombreClase.métodoEstático()``).
 
 Como quizá no haya quedado claro del todo, quiero que creéis una instancia de la clase ``Personaje``, le asignéis un nombre y una raza, y os 

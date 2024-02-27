@@ -14,7 +14,7 @@
     <script src="../../_static/translations.js?v=efdbd0b9"></script>
     <link rel="index" title="Índice" href="../../genindex.html" />
     <link rel="search" title="Búsqueda" href="../../search.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="m4c8_promesa.html" />
+    <link rel="prev" title="Promesas y asincronía" href="m4c8_promesa.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -35,7 +35,7 @@
   <section id="programacion-orientada-a-objetos-oop">
 <h1>Programación orientada a objetos (OOP)<a class="headerlink" href="#programacion-orientada-a-objetos-oop" title="Link to this heading">¶</a></h1>
 <p>En JS, la programación orientada a objetos se refiere al uso de elementos de código, denominados objetos,
-para agrupar datos y métodos (funciones) que se ejecutan sobre esos datos con el fin de diseñar y organizar los
+para agrupar datos y métodos (funciones), que se ejecutan sobre esos datos, con el fin de diseñar y organizar los
 programas. Al igual que con <a class="reference internal" href="../m3c6/m3c6_classes.html"><span class="doc">Python</span></a>, es muy importante entender las clases y los objetos (instancias de las clases).</p>
 <section id="clases-e-instancias">
 <h2>Clases e instancias<a class="headerlink" href="#clases-e-instancias" title="Link to this heading">¶</a></h2>
@@ -72,8 +72,8 @@ de Personaje, necesitamos un <code class="docutils literal notranslate"><span cl
 Dentro del constructor declaramos y asignamos valores a los atributos de la instancia que se cree usando
 esa clase como plantilla. Asimismo, fuera del constructor, tenemos un atributo estático de clase que es el juego
 al que pertenece el personaje, <code class="docutils literal notranslate"><span class="pre">static</span></code> está delante de esa variable para indicar que es de la clase y no del objeto generado
-con su «plano». Después, tenemos toda una serie de métodos de la instancia, tales como decir el nombre, raza o realizar una acción varias.
-Por último, tenemos <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">saludar()</span></code> que es un método de la clase, y no la instancia. Veamos cómo generar una instancia y usarla
+con su «plano». Después, tenemos toda una serie de métodos de la instancia, tales como decir el nombre, raza o realizar una acción.
+Por último, tenemos <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">saludar()</span></code> que es un método de la clase, no de la instancia. Veamos cómo generar una instancia y usarla
 para realizar acciones.</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">nuevoPersonaje</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Personaje</span><span class="p">(</span><span class="s2">&quot;Legolas&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Elfo del bosque&quot;</span><span class="p">);</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">nuevoPersonaje</span><span class="p">.</span><span class="nx">nombre</span><span class="p">);</span>
@@ -91,7 +91,7 @@ para realizar acciones.</p>
 <p>En la primera línea vemos como instanciar la clase de personaje pasándole dos atributos al constructor.
 En la segunda usamos un método <code class="docutils literal notranslate"><span class="pre">getter</span></code> para dar información sobre un atributo de la instancia (nótese la sintaxis
 de <code class="docutils literal notranslate"><span class="pre">instancia.getter</span></code>). En la tercera usamos un método de instancia (<code class="docutils literal notranslate"><span class="pre">instancia.método()</span></code>).
-En la cuarta usamos un método estático de la clase (importante: no ponemos <code class="docutils literal notranslate"><span class="pre">instancia.métodoEstático()</span></code> lo que ponemos
+En la cuarta usamos un método estático de la clase (importante: no ponemos <code class="docutils literal notranslate"><span class="pre">instancia.métodoEstático()</span></code>, lo que ponemos
 es <code class="docutils literal notranslate"><span class="pre">nombreClase.métodoEstático()</span></code>).</p>
 <p>Como quizá no haya quedado claro del todo, quiero que creéis una instancia de la clase <code class="docutils literal notranslate"><span class="pre">Personaje</span></code>, le asignéis un nombre y una raza, y os
 lo diga. Para lograrlo, tenéis que completar los huecos del código de ejemplo.</p>
@@ -154,6 +154,7 @@ console.log(`Me llamo ${nuevoPersonaje.nombre} y soy un ${PONED CÓDIGO}`);
 <li class="toctree-l1 current"><a class="reference internal" href="m4c8_index.html">M4C8 (Javascript)</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="m4c8_bucles.html">Bucles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="m4c8_funciones.html">Funciones y variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m4c8_promesa.html">Promesas y asincronía</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Programación orientada a objetos (OOP)</a></li>
 </ul>
 </li>
@@ -164,7 +165,7 @@ console.log(`Me llamo ${nuevoPersonaje.nombre} y soy un ${PONED CÓDIGO}`);
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
   <li><a href="m4c8_index.html">M4C8 (Javascript)</a><ul>
-      <li>Previous: <a href="m4c8_promesa.html" title="capítulo anterior">&lt;no title&gt;</a></li>
+      <li>Previous: <a href="m4c8_promesa.html" title="capítulo anterior">Promesas y asincronía</a></li>
   </ul></li>
   </ul></li>
 </ul>

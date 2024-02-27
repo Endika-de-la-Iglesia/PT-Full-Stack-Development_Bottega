@@ -28,7 +28,7 @@ de recibir los datos, en caso de recibirlos, se resuelve la promesa (*resolve*),
 
 En este código tenemos la promesa de retornar un mensaje u otro en caso de cumplirse la promesa tras una espera (``setTimeout()``)
 de 3 segundos (3000 por ser en milisegundos). En este caso siempre se cumplirá la promesa, no obstante, si cambiáramos el código para 
-recabar información web (usaremos ``fetch()``, que es un método basado en la generación de una promesa). Además, usaremos el método ``then`` para
+recabar información web (usaremos ``fetch()``, que es un método basado en la generación de una promesa), sí que podría salir mal la promesa. Además, usaremos el método ``then`` para
 hacer algo si se cumple la promesa y ``catch`` para pillar el fallo si no se cumple.
 
 .. code-block:: javascript
@@ -51,12 +51,12 @@ Asincronía: *await* y *async*
 --------------------------------
 
 Los términos *async* y *await* son utilizados para gestionar promesas de manera asíncrona. Muchas veces tendremos promesas que capturarán 
-datos cuando se resuelvan y usarán esos datos para resolver otras promesas, vamos que tendremos funciones esperando a que se les proporcionen
-unos elementos sin los que no pueden trabajar. Con *async* se declaran funciones que devuelven promesas y, dentro de esas funciones, se puede usar *await*
-para esperar a que una promesa se cumpla. Las funciones asíncronas son pacientes con las promesas, y ordenadas. Hasta que no se resuelve una función,
+datos cuando se resuelvan y usarán esos datos para resolver otras promesas, vamos, que tendremos funciones esperando a que se les proporcionen
+unos elementos sin los que no pueden trabajar. Con *async* se declaran funciones y, dentro de esas funciones, se puede usar *await*
+para esperar a que una promesa se cumpla. Las funciones asíncronas son pacientes con las promesas, y son ordenadas. Hasta que no se resuelve una promesa,
 no salta la siguiente, esto obviamente ocurre si las promesas están dentro de la misma función asíncrona.
 
-El ejemplo que voy a mostrar un caso en el que un usuario aporta un nombre y el programa lo imprime. El problema es que el programa tarda
+El ejemplo que voy a mostrar es un caso en el que un usuario aporta un nombre y el programa lo imprime. El problema es que el programa tarda
 6 segundos en recibir la información sobre el nombre e imprimirla es instantáneo. Si ambos procesos empezaran a la vez, de manera asíncrona, tendríamos
 que antes de dar el nombre ya estaría impreso, lo cual es imposible. 
 
@@ -87,7 +87,7 @@ que antes de dar el nombre ya estaría impreso, lo cual es imposible.
     ------
     Hola, [object Promise]
 
-Como se imprime antes de que se devuelva el nombre, lo que se imprime es el objeto de la promesa, que
+Como la ejecución del código de impresión no espera a que se devuelva el nombre, lo que se imprime es el objeto de la promesa, que
 está pendiente de ser cumplida. Si usáramos ``async`` y ``await`` podríamos librarnos de eso.
 
 .. code-block:: javascript
