@@ -1,0 +1,55 @@
+.test-console {
+    width: 60%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.test-console > .console-form {
+    height: 350px;
+    width: 100%;
+    display: flex;
+    border: 3px solid rgb(109, 112, 116);
+    border-radius: 20px;
+    background-color: #423d3e;
+    color: lightgray;
+}
+
+.line-numbers {
+    width: 3em;
+    border-right: 1px solid rgba(203, 213, 225, 0.786);
+    font-weight: bold;
+    overflow-y: hidden;
+    text-align: center;
+}
+
+#console-form-text {
+    border: none;
+    outline: none;
+    resize: none;
+    height: 90%;
+    width: 100%;
+    background-color: #423d3e;
+    color: lightgray;
+    padding: 1rem 0 1rem 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+.test-console button {
+    color: white;
+    background-color: #423d3e;
+    padding: 0.5em;
+    border: 2px solid rgb(109, 112, 116);
+    border-radius: 10px;
+}
+
+.test-console button:hover {
+    color: black;
+    background-color: rgba(203, 213, 225, 0.786);
+}
+
